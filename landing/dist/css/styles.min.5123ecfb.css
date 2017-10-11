@@ -1,0 +1,1299 @@
+@charset "UTF-8";
+/*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in
+ *    IE on Windows Phone and in iOS.
+ */
+/* line 12, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+html {
+  line-height: 1.15;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+/* line 25, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+body {
+  margin: 0;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+/* line 33, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+/* line 47, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in IE.
+ */
+/* line 60, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+figcaption,
+figure,
+main {
+  /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+/* line 70, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+/* line 79, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+/* line 90, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+/* line 103, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+a {
+  background-color: transparent;
+  /* 1 */
+  -webkit-text-decoration-skip: objects;
+  /* 2 */
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+/* line 113, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+/* line 123, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+/* line 132, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+/* line 142, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+/* line 153, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+/* line 161, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+/* line 170, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+/* line 179, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 187, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* line 191, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ */
+/* line 202, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+audio,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+/* line 211, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+/* line 220, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+/* line 228, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+/* line 240, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+/* line 256, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+/* line 266, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+/* line 277, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+/* line 288, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+/* line 300, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+/* line 311, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+/* line 322, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * 1. Add the correct display in IE 9-.
+ * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+/* line 336, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+progress {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+/* line 345, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+/* line 354, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+/* line 364, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+/* line 374, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+/* line 383, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+/* line 393, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ */
+/* line 406, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+details,
+menu {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+/* line 415, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+summary {
+  display: list-item;
+}
+
+/* Scripting
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ */
+/* line 426, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+canvas {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in IE.
+ */
+/* line 434, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+template {
+  display: none;
+}
+
+/* Hidden
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10-.
+ */
+/* line 445, /Users/Bordi/projects/aura/landing/src/sass/normalize.scss */
+[hidden] {
+  display: none;
+}
+
+/* line 4, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 8, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+*, :after, :before {
+  box-sizing: border-box;
+}
+
+/* line 12, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-family: BlinkMacSystemFont, -apple-system, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+/* line 28, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.wf-active body,
+.wf-active button {
+  font-family: "Wudoo Mono";
+}
+
+/* line 34, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+
+/* line 41, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.h1, .h2, .h3, h1, h2, h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* line 46, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 50, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+p {
+  margin: 0 0 10px;
+}
+
+/*
+Make the footer always be in the bottom
+*/
+/* line 57, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.page-wrap {
+  position: relative;
+  margin: 0 auto -60px;
+  min-height: 100%;
+  max-width: 1920px;
+  /* equal to footer height */
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* line 67, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+/* line 72, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.footer {
+  height: 60px;
+}
+
+/* line 76, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.page-wrap:after {
+  height: 20px;
+}
+
+/* line 80, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.button-close {
+  position: relative;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  width: 35px;
+  height: 20px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  transition: .5s ease-in-out;
+}
+
+@media only screen and (min-width: 992px) {
+  /* line 80, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+  .button-close {
+    display: none;
+  }
+}
+
+/* line 98, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.button-close__i {
+  display: block;
+  position: absolute;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  height: 4px;
+  width: 100%;
+  background: #fff;
+  border-radius: 4px;
+  opacity: 1;
+  transition: .25s ease-in-out;
+}
+
+/* line 112, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.button-close__i:nth-child(1) {
+  top: 0;
+}
+
+/* line 116, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.button-close__i:nth-child(2) {
+  top: calc( 50% - 2px);
+}
+
+/* line 120, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.button-close__i:nth-child(3) {
+  bottom: 0;
+}
+
+/* line 126, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.button-close--active .button-close__i:nth-child(1) {
+  top: 8px;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+/* line 131, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.button-close--active .button-close__i:nth-child(2) {
+  opacity: 0;
+  left: -35px;
+}
+
+/* line 136, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.button-close--active .button-close__i:nth-child(3) {
+  bottom: auto;
+  top: 8px;
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+}
+
+/* line 144, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.site-link {
+  font-size: inherit;
+  color: #2444ff;
+  text-decoration: underline;
+  transition: all .2s;
+}
+
+/* line 151, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.site-link:hover {
+  color: #f7f7f7;
+  text-decoration: none;
+}
+
+/* line 156, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.site-link:focus, .site-link:active {
+  color: #f2f2f2;
+}
+
+/* line 162, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.page-block__title {
+  padding: 15px 0;
+  font-size: 2em;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 162, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+  .page-block__title {
+    padding: 0;
+    font-size: 2.5em;
+  }
+}
+
+/* line 173, /Users/Bordi/projects/aura/landing/src/sass/_main.scss */
+.page-block__title--small {
+  font-size: 1.875em;
+}
+
+/* line 4, /Users/Bordi/projects/aura/landing/src/sass/components/header.scss */
+.header {
+  padding: 0;
+  position: relative;
+  transition: all .4s ease-in-out;
+}
+
+/* line 10, /Users/Bordi/projects/aura/landing/src/sass/components/header.scss */
+.header .wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  height: 110px;
+  max-width: 1360px;
+}
+
+@media only screen and (min-width: 992px) {
+  /* line 10, /Users/Bordi/projects/aura/landing/src/sass/components/header.scss */
+  .header .wrap {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+
+/* line 25, /Users/Bordi/projects/aura/landing/src/sass/components/header.scss */
+.header__logo {
+  width: 112px;
+  height: 89px;
+  cursor: pointer;
+}
+
+/* line 31, /Users/Bordi/projects/aura/landing/src/sass/components/header.scss */
+.header--fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* line 4, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  margin: 0;
+  top: 110px;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  -webkit-transform: translateX(calc(100% + 20px));
+          transform: translateX(calc(100% + 20px));
+  background: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  z-index: 1;
+  transition: all .3s;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* line 4, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+  .nav {
+    top: 120px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  /* line 4, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+  .nav {
+    position: relative;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin-left: 90px;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    width: 100%;
+    height: auto;
+    top: initial;
+    background: transparent;
+  }
+}
+
+/* line 43, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+.nav--open {
+  -webkit-transform: translateX(20px);
+          transform: translateX(20px);
+}
+
+/* line 48, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+.nav__block {
+  margin-top: 20px;
+  padding: 20px 40px;
+  width: 100%;
+  max-width: 400px;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+@media only screen and (min-width: 992px) {
+  /* line 48, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+  .nav__block {
+    margin: 0 0 0 auto;
+    padding: 0;
+    width: auto;
+    max-width: initial;
+    border: none;
+  }
+}
+
+/* line 68, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+.nav__item {
+  position: relative;
+  margin: 5px 20px;
+  padding: 10px 0;
+  font-size: 1em;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+
+@media only screen and (min-width: 992px) {
+  /* line 68, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+  .nav__item {
+    margin: 0 20px;
+  }
+  /* line 84, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+  .nav__item:last-child {
+    margin-right: 0;
+  }
+  /* line 88, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+  .nav__item:first-child {
+    margin-left: 0;
+  }
+}
+
+/* line 93, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+.nav__item:not(.nav__item--button):after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+  width: 0;
+  height: 2px;
+  background: #2444ff;
+  transition: all .2s;
+}
+
+/* line 109, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+.nav__item--active, .nav__item:hover, .nav__item:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* line 115, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+.nav__item--active:after, .nav__item:hover:after, .nav__item:focus:after {
+  width: 100%;
+}
+
+/* line 120, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+.nav__item--button {
+  padding: 7px 20px 5px;
+  border-radius: 40px;
+  box-shadow: 0 3px 4px 0 rgba(36, 0, 71, 0.4), 0 9px 10px 0 rgba(36, 0, 71, 0.5);
+  color: #fff;
+  border: 2px solid #fff;
+  transition: all .3s;
+}
+
+/* line 131, /Users/Bordi/projects/aura/landing/src/sass/components/navigation.scss */
+.nav__item--button:hover {
+  background: #fff;
+  color: #2444ff;
+}
+
+/* line 8, /Users/Bordi/projects/aura/landing/src/sass/components/buttons.scss */
+.button {
+  display: inline-block;
+  padding: 11px 40px 10px;
+  max-width: 100%;
+  font-weight: 700;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.61;
+  color: #fff;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  text-decoration: none;
+  background-image: none;
+  background-color: #2444ff;
+  border: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  outline: none;
+  transition: all .2s;
+  /*big button*/
+}
+
+/* line 33, /Users/Bordi/projects/aura/landing/src/sass/components/buttons.scss */
+.button:hover, .button:focus, .button:active {
+  text-decoration: none;
+}
+
+/* line 39, /Users/Bordi/projects/aura/landing/src/sass/components/buttons.scss */
+.button:hover {
+  background-color: #1537ff;
+}
+
+/* line 43, /Users/Bordi/projects/aura/landing/src/sass/components/buttons.scss */
+.button:focus, .button:active {
+  background-color: #0b2eff;
+}
+
+/* line 49, /Users/Bordi/projects/aura/landing/src/sass/components/buttons.scss */
+.button--big {
+  font-size: 1.375em;
+  padding: 17px 55px 16px;
+}
+
+/* line 6, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+.page-hero {
+  padding: 0 20px 15px;
+  position: relative;
+  min-height: 100vh;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 6, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+  .page-hero {
+    height: 953px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-height: 712px) {
+  /* line 6, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+  .page-hero {
+    height: 100vh;
+  }
+}
+
+/* line 20, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+.page-hero > .wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  max-width: 1360px;
+  min-height: 300px;
+  height: calc(100vh - 95px);
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 20, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+  .page-hero > .wrap {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    height: 953px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-height: 712px) {
+  /* line 20, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+  .page-hero > .wrap {
+    height: 100vh;
+  }
+}
+
+/* line 47, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+.page-hero__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+/* line 52, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+.page-hero__block--image {
+  display: none !important;
+}
+
+@media only screen and (min-width: 992px) {
+  /* line 52, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+  .page-hero__block--image {
+    display: block !important;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -webkit-transform: translateX(40px);
+            transform: translateX(40px);
+    background: url(../img/girl2x.png) no-repeat 100% 50% transparent;
+    background-size: contain;
+  }
+}
+
+/* line 67, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+.page-hero__block:first-child {
+  z-index: 1;
+}
+
+@media only screen and (min-width: 992px) {
+  /* line 67, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+  .page-hero__block:first-child {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    max-width: 485px;
+    -webkit-transform: translate(200px, -58px);
+            transform: translate(200px, -58px);
+  }
+}
+
+/* line 79, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+.page-hero__title {
+  margin-top: 0;
+  font-size: 2em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 79, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+  .page-hero__title {
+    margin-top: 0;
+    font-size: 2.8125em;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  /* line 79, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+  .page-hero__title {
+    text-align: left;
+  }
+}
+
+/* line 97, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+.page-hero__text {
+  margin-top: 20px;
+  font-size: 1em;
+  line-height: 1.3;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 97, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+  .page-hero__text {
+    margin-top: 60px;
+    font-size: 1.125em;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  /* line 97, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+  .page-hero__text {
+    text-align: left;
+  }
+}
+
+/* line 113, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+.page-hero__btn-wrap {
+  margin-top: 20px;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 113, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+  .page-hero__btn-wrap {
+    margin-top: 70px;
+  }
+}
+
+/* line 123, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+.btn-wrap__button {
+  text-transform: uppercase;
+}
+
+/* line 127, /Users/Bordi/projects/aura/landing/src/sass/components/page-hero.scss */
+.btn-wrap__text {
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.25em;
+}
+
+/* line 6, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* line 11, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social__item {
+  margin: 0 15px;
+  transition: opacity .2s ease-in-out;
+}
+
+/* line 16, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social__item:last-child {
+  margin-right: 0;
+}
+
+/* line 20, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social__item:first-child {
+  margin-left: 0;
+}
+
+/* line 24, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social__item:hover {
+  opacity: 0.8;
+}
+
+/* line 29, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social__icon {
+  display: block;
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+/* line 39, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social__icon--twitter {
+  background-image: url(../img/social--twitter.png);
+}
+
+/* line 43, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social__icon--fb {
+  background-image: url(../img/social--fb.png);
+}
+
+/* line 47, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social__icon--slack {
+  background-image: url(../img/social--slack.png);
+}
+
+/* line 51, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social__icon--telegram {
+  background-image: url(../img/social--telegram.png);
+}
+
+/* line 57, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social--small .social__icon {
+  width: 25px;
+  height: 25px;
+  background-size: contain;
+}
+
+/* line 66, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social--transparent .social__item {
+  opacity: 0.5;
+}
+
+/* line 69, /Users/Bordi/projects/aura/landing/src/sass/components/social.scss */
+.social--transparent .social__item:hover {
+  opacity: 1;
+}
+
+/* line 4, /Users/Bordi/projects/aura/landing/src/sass/components/counter.scss */
+.counter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 70px auto 0;
+}
+
+@media only screen and (min-width: 992px) {
+  /* line 4, /Users/Bordi/projects/aura/landing/src/sass/components/counter.scss */
+  .counter {
+    margin: 70px 0 0;
+  }
+}
+
+/* line 15, /Users/Bordi/projects/aura/landing/src/sass/components/counter.scss */
+.counter__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  margin: 0 20px;
+}
+
+/* line 23, /Users/Bordi/projects/aura/landing/src/sass/components/counter.scss */
+.counter__item:last-child {
+  margin-right: 0;
+}
+
+/* line 25, /Users/Bordi/projects/aura/landing/src/sass/components/counter.scss */
+.counter__item:last-child .counter-item__value:after {
+  display: none;
+  content: initial;
+}
+
+/* line 31, /Users/Bordi/projects/aura/landing/src/sass/components/counter.scss */
+.counter__item:first-child {
+  margin-left: 0;
+}
+
+/* line 38, /Users/Bordi/projects/aura/landing/src/sass/components/counter.scss */
+.counter-item__value {
+  position: relative;
+  font-size: 2.35em;
+  margin-bottom: 5px;
+}
+
+/* line 43, /Users/Bordi/projects/aura/landing/src/sass/components/counter.scss */
+.counter-item__value:after {
+  content: ":";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translate(calc(100% + 5px), -60%);
+          transform: translate(calc(100% + 5px), -60%);
+  color: currentColor;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 38, /Users/Bordi/projects/aura/landing/src/sass/components/counter.scss */
+  .counter-item__value {
+    font-size: 3.75em;
+  }
+}
+
+/* line 60, /Users/Bordi/projects/aura/landing/src/sass/components/counter.scss */
+.counter-item__desc {
+  font-size: 0.7125em;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 60, /Users/Bordi/projects/aura/landing/src/sass/components/counter.scss */
+  .counter-item__desc {
+    font-size: 1em;
+  }
+}
+
+/* line 4, /Users/Bordi/projects/aura/landing/src/sass/components/footer.scss */
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  position: relative;
+  height: 267px;
+  background-image: url(../img/right-bottom.png);
+  background-position: 95% 100%, 0 100%;
+  background-repeat: no-repeat;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 4, /Users/Bordi/projects/aura/landing/src/sass/components/footer.scss */
+  .footer {
+    background-image: url(../img/right-bottom.png), url(../img/left-bottom.png);
+  }
+}
+
+/* line 20, /Users/Bordi/projects/aura/landing/src/sass/components/footer.scss */
+.footer__text {
+  max-width: 1360px;
+  margin: 0 auto;
+  font-size: 0.8125em;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+/*# sourceMappingURL=styles.min.5123ecfb.css.map */
