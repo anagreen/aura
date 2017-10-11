@@ -11,12 +11,18 @@
     &__item {
         margin: 0 15px;
 
+        transition: opacity .2s ease-in-out;
+
         &:last-child {
             margin-right: 0;
         }
 
         &:first-child {
             margin-left: 0;
+        }
+
+        &:hover {
+            opacity: 0.8;
         }
     }
 
@@ -59,6 +65,10 @@
     &--transparent {
         .social__item {
             opacity: 0.5;
+
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 }
