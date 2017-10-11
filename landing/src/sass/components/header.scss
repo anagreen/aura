@@ -14,17 +14,17 @@
 
         margin: 0 auto;
 
-        height: #{$header-height - 80};
-        max-width: $content-width;
+        height: $header-height;
+        max-width: $header-width;
 
-        @include tabletUp() {
-            height: $header-height;
+        @include desktop() {
+            justify-content: flex-start;
         }
     }
 
     &__logo {
-        width: 111px;
-        height: 36px;
+        width: 112px;
+        height: 89px;
         cursor: pointer;
     }
 

@@ -9,14 +9,14 @@
     position: absolute;
     margin: 0;
 
-    top: 70px;
+    top: $header-height;
     right: 0;
     width: 100vw;
     height: 100vh;
 
     transform: translateX(calc(100% + #{$grid-gutter-width/2}));
 
-    background: rgba(36, 0, 71, 0.9);
+    background: rgba(0, 0, 0, 0.9);
     text-align: center;
     z-index: 1;
 
@@ -28,11 +28,12 @@
 
     @include desktop() {
         position: relative;
-        justify-content: flex-end;
         flex-direction: row;
 
+        margin-left: 90px;
+
         transform: translateX(0);
-        width: auto;
+        width: 100%;
         height: auto;
 
         top: initial;
@@ -44,18 +45,36 @@
     }
 }
 
+.nav__block {
+    margin-top: 20px;
+    padding: 20px $grid-gutter-width;
+
+    width: 100%;
+    max-width: 400px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+
+    @include desktop {
+        margin: 0 0 0 auto;
+        padding: 0;
+
+        width: auto;
+        max-width: initial;
+        
+        border: none;
+    }
+}
+
 .nav__item {
     position: relative;
     margin: 5px $grid-gutter-width/2;
     padding: 10px 0;
 
-    font-size: 0.8125em;
+    font-size: 1em;
     font-weight: 700;
-    letter-spacing: 4px;
     cursor: pointer;
 
     color: #fff;
-    text-transform: uppercase;
     text-decoration: none;
 
     outline: none;
@@ -75,13 +94,15 @@
     &:not(.nav__item--button):after {
         content: "";
         position: absolute;
+
         left: 0;
         bottom: 0;
+        transform: translateY(5px);
 
         width: 0;
         height: 2px;
 
-        background: #fff;
+        background: $brand-color;
 
         transition: all .2s;
     }

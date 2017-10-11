@@ -1,0 +1,64 @@
+@import "../variables";
+@import "../mixins";
+
+// @TODO: Move icons to sprite
+
+.social {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__item {
+        margin: 0 15px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    &__icon {
+        display: block;
+
+        width: 36px;
+        height: 36px;
+
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+
+        &--twitter {
+            background-image: url(../img/social--twitter.png);
+        }
+
+        &--fb {
+            background-image: url(../img/social--fb.png);
+        }
+
+        &--slack {
+            background-image: url(../img/social--slack.png);
+        }
+
+        &--telegram {
+            background-image: url(../img/social--telegram.png);
+        }
+    }
+
+    &--small {
+        .social__icon {
+            width: 25px;
+            height: 25px;
+
+            background-size: contain;
+        }
+    }
+
+    &--transparent {
+        .social__item {
+            opacity: 0.5;
+        }
+    }
+}

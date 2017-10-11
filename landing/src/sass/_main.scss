@@ -32,9 +32,7 @@ body {
     .button,
     .nav__item,
     .page-hero__title,
-    .page-block__title,
-    .rangeslider__handle:after{
-        font-family: $font-custom-2;
+    .page-block__title {
         font-weight: 700;
     }
 }

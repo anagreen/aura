@@ -36,17 +36,6 @@ $screen-xs-max: ($screen-sm-min - 1) !default;
 $screen-sm-max: ($screen-md-min - 1) !default;
 $screen-md-max: ($screen-lg-min - 1) !default;
 
-// Icons
-$icons: (
-    // Generate icon font classes
-    // Add/remove icons as needed
-    // $name, $character, $color
-    // $name - {string} the name of the icon (will be prefixed by `.icon-`)
-    // $character - {string} the unicode character for the icon
-    // $color - {string|variable|optional} the hex or named color of the icon
-                ("logo", "\e600", null),
-);
-
 $grid-gutter-width: 40px !default;
 // Small screen / tablet
 $container-tablet: (720px + $grid-gutter-width) !default;
@@ -63,19 +52,19 @@ $container-large-desktop: (1240px + $grid-gutter-width) !default;
 //** For `$screen-lg-min` and up.
 $container-lg: $container-large-desktop !default;
 
-$container-xl: (1640px + $grid-gutter-width) !default;
+$container-xl: (1360px + $grid-gutter-width) !default;
 
 //Sites variables
 $content-width: 1200px;
-$brand-color: #460089;
-$brand-secondary: #3EFFFF;
+$brand-color: #2444ff;
+$brand-secondary: #fff;
 
-$bg-color: #fff;
+$bg-color: #000;
 
-$font-color: #0A0A0A;
+$font-color: #fff;
 $font-default: BlinkMacSystemFont, -apple-system, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
-$font-custom-1: "Lato";
-$font-custom-2: "Poppins";
+$font-custom-1: "Wudoo Mono";
 
-$header-height: 155px;
+$header-height: 110px;
+$header-width: 1360px;
 $footer-height: 60px;

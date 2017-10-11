@@ -102,3 +102,107 @@
 </head>
 
 <body>
+<div class="page-wrap" id="page">
+    <section class="page-hero" id="page-hero">
+    <header class="header">
+    <div class="wrap">
+        <a href="/">
+            <img src="./img/logo.png" alt="Aura logo"
+                 class="header__logo" />
+        </a>
+
+        <nav class="nav" id="js-mainNavigation">
+    <a href="#product"
+       class="nav__item">
+        Product
+    </a>
+    <a href="#features"
+       class="nav__item">
+        Features
+    </a>
+    <a href="#roadmap"
+       class="nav__item">
+        Roadmap
+    </a>
+    <a href="#team"
+       class="nav__item">
+        Team
+    </a>
+
+    <div class="nav__block">
+        <div class="social social--small social--transparent header__social">
+            <a class="social__item" href="#">
+                <span class="social__icon social__icon--twitter"></span>
+            </a>
+            <a class="social__item" href="#">
+                <span class="social__icon social__icon--fb"></span>
+            </a>
+            <a class="social__item" href="#">
+                <span class="social__icon social__icon--slack"></span>
+            </a>
+            <a class="social__item" href="#">
+                <span class="social__icon social__icon--telegram"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+        <button id="js-menuBtn"
+                class="button-close"
+                type="button">
+            <span class="button-close__i"></span>
+            <span class="button-close__i"></span>
+            <span class="button-close__i"></span>
+        </button>
+    </div>
+</header>
+
+
+    <div class="wrap">
+        <div class="page-hero__block">
+            <h1 class="page-hero__title">
+
+            </h1>
+            <p class="page-hero__text">
+
+            </p>
+        </div>
+
+        <div class="page-hero__block">
+
+        </div>
+    </div>
+</section>
+
+</div>
+<footer class="footer">
+    <p class="footer__text">&copy; Aura, All rights reserved.</p>
+</footer>
+
+<noscript id="deferred-styles">
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="./css/styles.min.4bb218ff.css" type="text/css">
+</noscript>
+<script>
+    var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement);
+        addStylesNode.parentElement.removeChild(addStylesNode);
+    };
+    var raf = requestAnimationFrame
+        || mozRequestAnimationFrame
+        || webkitRequestAnimationFrame
+        || msRequestAnimationFrame;
+    if(raf) raf(function() {
+        window.setTimeout(loadDeferredStyles, 0);
+    });
+    else window.addEventListener('load', loadDeferredStyles);
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
+<script src="./js/scripts.min.a4fa3808.js" defer></script>
+</body>
+</html>
