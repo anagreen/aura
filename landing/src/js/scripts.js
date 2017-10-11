@@ -26,7 +26,7 @@ function handleClickToScroll(e) {
 
 function initCounter() {
     // Set the date we're counting down to
-    var countDownDate = new Date("Nov 1, 2017 15:37:25").getTime();
+    var countDownDate = new Date("Nov 1, 2017 17:32:25").getTime();
     var counterDays = $('#counter-days');
     var counterHours = $('#counter-hours');
     var counterMinutes = $('#counter-minutes');
@@ -50,10 +50,10 @@ function initCounter() {
 
         // Display the result in the element with id="demo"
 
-        counterDays.html(days);
-        counterHours.html(hours);
-        counterMinutes.html(minutes);
-        counterSeconds.html(seconds);
+        counterDays.html(days || '00');
+        counterHours.html(hours || '00');
+        counterMinutes.html(minutes || '00');
+        counterSeconds.html(seconds || '00');
 
 
        /* document.getElementById("demo").innerHTML = days + "d " + hours + "h "
@@ -62,7 +62,11 @@ function initCounter() {
         // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
+
+            counterDays.html('00');
+            counterHours.html('00');
+            counterMinutes.html('00');
+            counterSeconds.html('00');
         }
     }, 1000);
 }
