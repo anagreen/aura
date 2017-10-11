@@ -1,0 +1,184 @@
+@import "mixins";
+@import "variables";
+
+html, body {
+    height: 100%;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: $bg-color;
+
+    color: $font-color;
+    font-size: 16px;
+    font-family: $font-default;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+.wf-active {
+    body {
+        font-family: $font-custom-1;
+    }
+
+    .button,
+    .nav__item,
+    .page-hero__title,
+    .page-block__title,
+    .rangeslider__handle:after{
+        font-family: $font-custom-2;
+        font-weight: 700;
+    }
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+/*
+Make the footer always be in the bottom
+*/
+.page-wrap {
+    position: relative;
+    margin: 0 auto -#{$footer-height};
+
+    min-height: 100%;
+    max-width: 1920px;
+    /* equal to footer height */
+    overflow: hidden;
+    z-index: 2;
+}
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+
+.footer {
+    height: $footer-height;
+}
+
+.page-wrap:after {
+    height: 20px;
+}
+
+.button-close {
+    position: relative;
+    transform: rotate(0deg);
+
+    width: 35px;
+    height: 20px;
+
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+
+    transition: .5s ease-in-out;
+
+    @include desktop() {
+        display: none;
+    }
+
+    &__i {
+        display: block;
+        position: absolute;
+        left: 0;
+        transform: rotate(0deg);
+
+        height: 4px;
+        width: 100%;
+
+        background: $brand-secondary;
+        border-radius: 4px;
+        opacity: 1;
+        transition: .25s ease-in-out;
+
+        &:nth-child(1) {
+            top: 0;
+        }
+
+        &:nth-child(2) {
+            top: calc( 50% - 2px);
+        }
+
+        &:nth-child(3) {
+            bottom: 0;
+        }
+    }
+
+    &--active {
+        .button-close__i:nth-child(1) {
+            top: 8px;
+            transform: rotate(135deg);
+        }
+
+        .button-close__i:nth-child(2) {
+            opacity: 0;
+            left: -35px;
+        }
+
+        .button-close__i:nth-child(3) {
+            bottom: auto;
+            top: 8px;
+            transform: rotate(-135deg);
+        }
+    }
+}
+
+.site-link {
+    font-size: inherit;
+    color: $brand-color;
+    text-decoration: underline;
+
+    transition: all .2s;
+
+    &:hover {
+        color: darken($brand-secondary, 3%);
+        text-decoration: none;
+    }
+
+    &:focus,
+    &:active {
+        color: darken($brand-secondary, 5%);
+    }
+}
+
+.page-block__title {
+    padding: 15px 0;
+
+    font-size: 2em;
+    text-align: center;
+
+    @include tabletUp() {
+        padding: 0;
+        font-size: 2.5em;
+    }
+
+    &--small {
+        font-size: 1.875em;
+    }
+}

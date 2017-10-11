@@ -1,0 +1,168 @@
+@import "../variables";
+@import "../mixins";
+
+$img-height: 712px;
+
+.page-hero {
+    padding: 0 $grid-gutter-width/2 15px;
+    position: relative;
+
+    height: 100vh;
+    min-height: 500px;
+
+    color: #fff;
+
+    background-image: url(./img/bg-heropage-mob.jpg);
+    background-color: $brand-color;
+    background-size: cover;
+    background-position: 50% 0;
+
+    @include tabletUp() {
+        background-image: url(./img/bg-heropage-low.jpg);
+        height: $img-height;
+
+        @include firstScreen() {
+            height: 100vh;
+        }
+
+        @include retina2x() {
+            background-image: url(./img/bg-heropage@2x-low.jpg)
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            top: 0;
+            left: 0;
+
+            opacity: 0;
+
+            transition: opacity .3s;
+        }
+
+        &--loaded:before {
+            opacity: 1;
+
+            background-color: $brand-color;
+            background-size: cover;
+            background-position: 50% 0;
+
+            @include tabletUp() {
+                background-image: url(./img/bg-heropage.jpg);
+
+                @include retina2x() {
+                    background-image: url(./img/bg-heropage@2x.jpg)
+                }
+            }
+        }
+    }
+
+    & > .wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+
+        margin: 0 auto;
+
+        max-width: $content-width;
+        min-height: 300px;
+        height: calc(100vh - 95px);
+
+        text-align: center;
+
+        @include tabletUp() {
+            height: calc(#{$img-height} - 170px);
+
+            @include firstScreen() {
+                height: calc(100vh - 170px);
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                width: 200px;
+                height: 200px;
+
+                bottom: 0;
+                left: 0;
+                transform: translateY(60px);
+
+                background-image: url(./img/O.png);
+                background-color: transparent;
+                background-position: 0 0;
+                background-size: contain;
+
+                @include desktop() {
+                    width: 331px;
+                    height: 331px;
+                    transform: translateY(125px);
+                }
+
+                @include retina2x() {
+                    background-image: url(./img/O@2x.png)
+                }
+            }
+        }
+
+        .button {
+            box-shadow: 0 3px 4px 0 rgba(36,0,71,0.4),
+                        0 9px 10px 0 rgba(36,0,71,0.5);
+        }
+    }
+}
+
+.page-hero__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .button {
+        margin: 20px 0;
+
+        @include tabletUp() {
+            margin-bottom: 60px;
+        }
+    }
+
+    margin-top: auto;
+}
+
+.page-hero__title {
+    font-size: 1.8em;
+    margin-top: 0;
+
+    @include tabletUp() {
+
+        font-size: 3.125em;
+    }
+}
+
+.page-hero__text {
+    font-size: 1.3em;
+    margin-top: 20px;
+
+    @include tabletUp() {
+        font-size: 1.5em;
+    }
+}
+
+.page-hero__icon {
+    animation: bounce 3.5s infinite;
+}
+
+.page-hero__slack {
+    margin-right: 5px;
+    width: 40px;
+    vertical-align: middle;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}

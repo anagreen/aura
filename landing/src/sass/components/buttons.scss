@@ -1,0 +1,57 @@
+//@TODO: change padding from px -> em
+
+@import "../variables";
+@import "../mixins";
+
+$font-size: 16px;
+
+.button {
+    display: inline-block;
+    padding: 11px 40px 10px;
+    max-width: 100%;
+
+    font-weight: 700;
+    text-align: center;
+    font-size: $font-size;
+    line-height: 1.61;
+    color: $brand-color;
+
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    text-decoration: none;
+
+    background-image: none;
+    background-color: $brand-secondary;
+    border: none;
+    border-radius: 40px;
+    box-shadow: 0 3px 4px 0 rgba(36,0,71,0.06),
+                0 9px 10px 0 rgba(36,0,71,0.08);
+
+    white-space: nowrap;
+    user-select: none;
+    outline: none;
+    transition: all .2s;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $brand-secondary;
+        text-decoration: none;
+    }
+
+    &:hover {
+        background-color: darken($brand-color, 3%);
+    }
+
+    &:focus,
+    &:active {
+        background-color: darken($brand-color, 5%);
+    }
+
+    /*big button*/
+    &--big {
+        font-size: 1.375em;
+        padding: 17px 55px 16px;
+    }
+}

@@ -1,0 +1,29 @@
+@import "../variables";
+@import "../mixins";
+
+.footer {
+    display: flex;
+    align-items: flex-end;
+
+    position: relative;
+    height: 267px;
+
+    background-image: url(../img/right-bottom.png);
+    background-position: 95% 100%, 0 100%;
+    background-repeat: no-repeat;
+
+    @include tabletUp() {
+        background-image: url(../img/right-bottom.png),
+        url(../img/left-bottom.png);
+    }
+
+    &__text {
+        max-width: $content-width;
+        margin: 0 auto;
+
+        font-size: 0.8125em;
+        text-align: center;
+
+        padding-bottom: 40px;
+    }
+}
