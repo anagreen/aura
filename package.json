@@ -1,0 +1,28 @@
+{
+  "name": "aura",
+  "version": "1.0.0",
+  "description": "User profile service",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js 2>&1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/aura"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/speech": "^0.10.3",
+    "aws-sdk": "^2.126.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "request": "^2.83.0",
+    "restify": "^6.0.1",
+    "s3-upload-stream": "^1.0.7",
+    "tmp": "0.0.33",
+    "url": "^0.11.0"
+  }
+}
