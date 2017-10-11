@@ -1,0 +1,67 @@
+@import "../variables";
+@import "../mixins";
+
+.counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 70px auto 0;
+
+    @include desktop() {
+        margin: 70px 0 0;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        position: relative;
+        margin: 0 20px;
+
+        &:last-child {
+            margin-right: 0;
+            .counter-item__value:after {
+                display: none;
+                content: initial;
+            }
+        }
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+.counter-item {
+    &__value {
+        position: relative;
+        font-size: 2.35em;
+        margin-bottom: 5px;
+
+        &:after {
+            content: ":";
+            position: absolute;
+
+            top: 50%;
+            right: 0;
+
+            transform: translate(calc(100% + 10px), -60%);
+
+            color: currentColor;
+        }
+
+        @include tabletUp() {
+            font-size: 3.75em;
+        }
+    }
+
+    &__desc {
+        font-size: 0.7125em;
+
+        @include tabletUp() {
+            font-size: 1em;
+        }
+    }
+}

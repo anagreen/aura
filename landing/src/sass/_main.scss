@@ -25,15 +25,9 @@ body {
 }
 
 .wf-active {
-    body {
+    body,
+    button {
         font-family: $font-custom-1;
-    }
-
-    .button,
-    .nav__item,
-    .page-hero__title,
-    .page-block__title {
-        font-weight: 700;
     }
 }
 

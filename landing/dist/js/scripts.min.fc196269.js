@@ -66,3 +66,5 @@ function initCounter() {
         }
     }, 1000);
 }
+
+//# sourceMappingURL=scripts.min.js.map

@@ -14,7 +14,7 @@ $font-size: 16px;
     text-align: center;
     font-size: $font-size;
     line-height: 1.61;
-    color: $brand-color;
+    color: #fff;
 
     vertical-align: middle;
     touch-action: manipulation;
@@ -22,11 +22,8 @@ $font-size: 16px;
     text-decoration: none;
 
     background-image: none;
-    background-color: $brand-secondary;
+    background-color: $brand-color;
     border: none;
-    border-radius: 40px;
-    box-shadow: 0 3px 4px 0 rgba(36,0,71,0.06),
-                0 9px 10px 0 rgba(36,0,71,0.08);
 
     white-space: nowrap;
     user-select: none;
@@ -36,7 +33,6 @@ $font-size: 16px;
     &:hover,
     &:focus,
     &:active {
-        color: $brand-secondary;
         text-decoration: none;
     }
 
