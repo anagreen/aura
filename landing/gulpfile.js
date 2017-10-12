@@ -96,7 +96,7 @@ const isProduction = gutil.env.type === 'production';
 gulp.task('build:scripts', ['clean:dist'], function() {
     const jsTasks = lazypipe()
         .pipe(rename, {suffix: '.min'})
-        .pipe(isProduction ? uglify : gutil.noop)
+        //.pipe(isProduction ? uglify : gutil.noop)
         .pipe(sourcemaps.write, './')
         .pipe(cachebust.resources.bind(cachebust))
         .pipe(gulp.dest, paths.scripts.output)
