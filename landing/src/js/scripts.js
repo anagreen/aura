@@ -9,7 +9,7 @@ $(function() {
     $('#js-mainNavigation').on('click', '.nav__item:not(.nav__item--button)', handleClickToScroll);
 
     //init countdown
-    //initCounter();
+    initCounter();
 });
 
 function handleClickToScroll(e) {
@@ -26,7 +26,7 @@ function handleClickToScroll(e) {
 
 function initCounter() {
     // Set the date we're counting down to
-    var countDownDate = new Date('Nov 1, 2017 17:32:25').getTime();
+    var countDownDate = new Date('Nov 15, 2017 9:00:00').getTime();
     var counterDays = $('#counter-days');
     var counterHours = $('#counter-hours');
     var counterMinutes = $('#counter-minutes');
