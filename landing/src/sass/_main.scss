@@ -172,3 +172,14 @@ Make the footer always be in the bottom
         font-size: 1.875em;
     }
 }
+
+// hacks!
+.Header.Header--top,
+.Footer {
+  display: none !important;
+}
+
+.Main-content {
+  max-width: 100% !important;
+  padding: 0 !important;
+}

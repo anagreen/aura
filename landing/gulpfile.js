@@ -56,20 +56,20 @@ const paths = {
     output: 'dist/',
     scripts: {
         input: 'src/js/*',
-        output: 'dist/js/',
+        output: 'dist/scripts/auracoins/',
     },
     styles: {
         //input: 'src/sass/**/*.{scss,sass}',
         input: 'src/sass/{styles,critical}.{scss,sass}',
-        output: 'dist/css/',
+        output: 'dist/assets/auracoins/',
     },
     svgs: {
         input: 'src/svg/*',
-        output: 'dist/svg/',
+        output: 'dist/assets/auracoins/',
     },
     images: {
         input: 'src/img/**/**',
-        output: 'dist/img/',
+        output: 'dist/assets/auracoins/',
     },
     static: {
         input: 'src/static/*',
@@ -82,7 +82,7 @@ const paths = {
     },
     assets: {
         input: 'src/assets/**.**',
-        output: 'dist/assets/',
+        output: 'dist/assets/auracoins/',
     },
 };
 

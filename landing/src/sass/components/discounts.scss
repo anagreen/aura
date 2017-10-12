@@ -63,7 +63,7 @@ $img-height: 690px;
             flex-grow: 1;
             transform: translateX(40px);
 
-            background: url(../img/discounts-bg.png) no-repeat 0 50% transparent;
+            background: url(../assets/auracoins/discounts-bg.png) no-repeat 0 50% transparent;
             background-size: contain;
 
         }
@@ -101,17 +101,17 @@ $img-height: 690px;
         background-position: 50% 50%;
 
         &--1 {
-            background-image: url(../img/discount-1.png);
+            background-image: url(../assets/auracoins/discount-1.png);
             width: 345px;
         }
 
         &--2 {
-            background-image: url(../img/discount-2.png);
+            background-image: url(../assets/auracoins/discount-2.png);
             width: 287px;
         }
 
         &--3 {
-            background-image: url(../img/discount-3.png);
+            background-image: url(../assets/auracoins/discount-3.png);
             width: 283px;
         }
     }
