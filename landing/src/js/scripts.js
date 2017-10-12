@@ -9,7 +9,7 @@ $(function() {
     $('#js-mainNavigation').on('click', '.nav__item:not(.nav__item--button)', handleClickToScroll);
 
     //init countdown
-    initCounter();
+    //initCounter();
 });
 
 function handleClickToScroll(e) {

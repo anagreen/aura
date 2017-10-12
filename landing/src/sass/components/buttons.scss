@@ -50,4 +50,18 @@ $font-size: 16px;
         font-size: 1.375em;
         padding: 17px 55px 16px;
     }
+
+    &--empty {
+        color: #fff;
+
+        border: 2px solid $brand-mute;
+        background: transparent;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $brand-color;
+            background: transparent;
+        }
+    }
 }

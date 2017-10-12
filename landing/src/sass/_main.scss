@@ -69,6 +69,15 @@ Make the footer always be in the bottom
     display: block;
 }
 
+.page-content {
+
+    &__gap {
+        @include desktop() {
+            transform: translateX(200px);
+        }
+    }
+}
+
 .footer {
     height: $footer-height;
 }

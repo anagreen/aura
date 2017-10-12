@@ -8,13 +8,7 @@
     position: relative;
     height: 267px;
 
-    background-image: url(../img/right-bottom.png);
-    background-position: 95% 100%, 0 100%;
-    background-repeat: no-repeat;
-
     @include tabletUp() {
-        background-image: url(../img/right-bottom.png),
-        url(../img/left-bottom.png);
     }
 
     &__text {
