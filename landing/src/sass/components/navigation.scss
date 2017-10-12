@@ -16,9 +16,9 @@
 
     transform: translateX(calc(100% + #{$grid-gutter-width/2}));
 
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     text-align: center;
-    z-index: 1;
+    z-index: 3;
 
     transition: all .3s;
 

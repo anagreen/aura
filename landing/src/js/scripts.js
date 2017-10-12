@@ -70,3 +70,94 @@ function initCounter() {
         }
     }, 1000);
 }
+
+//mailchimp
+$(function() {
+    var $form = $('#js-subsForm');
+
+    $('#js-subsForm button').on('click', function(event) {
+        if(event) {
+            event.preventDefault();
+        }
+
+        if(validateForm()) {
+            register($form);
+        }
+    });
+
+});
+
+function validateForm() {
+    var formInputs = $('.subscribe-form:not(.button)');
+
+    formInputs.each(function(index) {
+        if(validateInput($(this))) {
+            $(this).removeClass('subscribe-form--error');
+        }
+        else {
+            $(this).addClass('subscribe-form--error');
+        }
+    });
+
+    return !$('.form__item--error').length;
+}
+
+function validateInput(el) {
+    var type = $(el).attr('type');
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var elVal = $(el).val();
+
+    if(type === 'text') {
+        return !!elVal;
+    }
+    else if(type === 'email') {
+        return !!elVal && re.test(elVal);
+    }
+}
+
+function toggleDisableInputs(isDisable, $form) {
+    isDisable = isDisable || true;
+
+    $($form.prop('elements')).each(function(ind) {
+        if(isDisable && $(this).attr('type') !== 'hidden') {
+            $(this).addClass('subscribe-form__item--disabled');
+        }
+        else {
+            $(this).removeClass('subscribe-form__item--disabled');
+        }
+    });
+
+}
+
+function register($form) {
+    var afterSubmitText = $('#js-afterSubmit');
+    toggleDisableInputs(true, $form); //true - disable, false - available
+
+    $.ajax({
+        type: $form.attr('method'),
+        url: $form.attr('action'),
+        data: $form.serialize(),
+        cache: false,
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        error: function(err) {
+            toggleDisableInputs(false, $form);
+            afterSubmitText
+                //.text('Could not connect to the registration server. Please try again later.')
+                .show();
+        },
+        success: function(data) {
+            $form.hide();
+            afterSubmitText
+                .html(data.msg)
+                .show();
+
+        },
+        complete: function() {
+            $form.hide();
+            afterSubmitText
+                .html('Please, check your email to confirm subscription')
+                .show();
+        }
+    });
+}

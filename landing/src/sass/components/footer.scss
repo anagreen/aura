@@ -1,23 +1,47 @@
 @import "../variables";
 @import "../mixins";
 
+$footer-background: #0c0c0c;
+
 .footer {
-    display: flex;
-    align-items: flex-end;
+    padding: 20px 30px;
+
+    background: $footer-background;
+
+    @include desktop() {
+        padding: 60px 100px 40px;
+    }
 
     position: relative;
-    height: 267px;
 
     @include tabletUp() {
     }
 
     &__text {
-        max-width: $content-width;
         margin: 0 auto;
 
-        font-size: 0.8125em;
-        text-align: center;
+        font-size: 0.9375em;
+        text-align: justify;
+    }
 
-        padding-bottom: 40px;
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-top: 20px;
+    }
+
+    &__logo {
+        margin-right: 20px;
+        width: 100px;
+        vertical-align: middle;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: #fff;
+
+        text-transform: uppercase;
     }
 }

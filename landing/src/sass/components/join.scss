@@ -1,0 +1,86 @@
+@import "../variables";
+@import "../mixins";
+
+$img-height: 799px;
+
+.join {
+    position: relative;
+
+    padding: 0 $grid-gutter-width/2;
+    margin: 0 auto;
+
+    max-width: $max-content-width;
+    text-align: center;
+
+    &:before {
+        content: "";
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: $img-height;
+
+        background: url(../img/join-bg.png) no-repeat 0 0 transparent;
+        background-size: cover;
+    }
+
+    @include desktop() {
+        transform: translateY(-30%);
+    }
+
+    & > .wrap {
+        display: flex;
+        flex-direction: column;
+
+        position: relative;
+        margin: 0 auto;
+
+        max-width: $content-width;
+
+        @include desktop() {
+            height: $img-height;
+
+            justify-content: center;
+        }
+    }
+
+    &__title {
+        font-size: 2.5125em;
+        color: $brand-mute;
+        text-align: left;
+
+        @include tabletUp() {
+            margin-bottom: 70px;
+
+            font-size: 3.125em;
+
+            @include desktop() {
+                margin-left: 200px;
+            }
+        }
+    }
+
+    &__text {
+        margin: 0;
+
+        font-size: 1.5125em;
+        line-height: 2;
+        text-align: left;
+
+        @include desktop() {
+            margin-left: 200px;
+            margin-bottom: 100px;
+
+            font-size: 1.8125em;
+        }
+    }
+
+    .button {
+        @include tabletUp() {
+            align-self: center;
+            width: 180px;
+        }
+    }
+}

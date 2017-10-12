@@ -26,7 +26,8 @@ body {
 
 .wf-active {
     body,
-    button {
+    button,
+    input {
         font-family: $font-custom-1;
     }
 }
@@ -56,17 +57,13 @@ Make the footer always be in the bottom
 */
 .page-wrap {
     position: relative;
-    margin: 0 auto -#{$footer-height};
+    margin: 0 auto;
 
     min-height: 100%;
     max-width: 1920px;
     /* equal to footer height */
     overflow: hidden;
     z-index: 2;
-}
-.page-wrap:after {
-    content: "";
-    display: block;
 }
 
 .page-content {
@@ -76,14 +73,6 @@ Make the footer always be in the bottom
             transform: translateX(200px);
         }
     }
-}
-
-.footer {
-    height: $footer-height;
-}
-
-.page-wrap:after {
-    height: 20px;
 }
 
 .button-close {
