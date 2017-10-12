@@ -50,7 +50,7 @@ $img-height: 953px;
             flex-grow: 1;
             transform: translateX(40px);
 
-            background: url(../assets/auracoins/girl2x.png) no-repeat 100% 50% transparent;
+            background: url(./girl2x.png) no-repeat 100% 50% transparent;
             background-size: contain;
 
         }
@@ -73,6 +73,7 @@ $img-height: 953px;
 
     font-size: 2em;
     font-weight: 400;
+    line-height: 1.4;
     text-transform: uppercase;
 
     @include tabletUp() {

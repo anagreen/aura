@@ -27,16 +27,25 @@ body {
 .wf-active {
     body,
     button,
-    input {
-        font-family: $font-custom-1;
+    input,
+    * {
+        font-family: $font-custom-1 !important;
     }
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     font-family: inherit;
-    font-weight: 500;
-    line-height: 1.1;
+    font-weight: 400 !important;
+    line-height: 1.1 !important;
     color: inherit;
+
+    font-family: $font-custom-1 !important;
+    font-size: inherit !important;
+    letter-spacing: 0px !important;
+
+    font-size: inherit !important;
+
+    text-transform: none !important;
 }
 
 .h1, .h2, .h3, h1, h2, h3 {
@@ -44,8 +53,10 @@ body {
     margin-bottom: 10px;
 }
 
-a {
+a,
+a:visited {
     text-decoration: none;
+    color: $font-color;
 }
 
 p {
@@ -177,6 +188,27 @@ Make the footer always be in the bottom
 .Header.Header--top,
 .Footer {
   display: none !important;
+}
+
+header#header {
+  display: none !important;
+}
+
+#footer {
+  display: none !important;
+}
+
+#siteWrapper {
+  font-size: 16px !important;
+  line-height: initial !important;
+  letter-spacing: 0 !important;
+  background: $bg-color !important;
+}
+
+#page {
+  padding: 0 !important;
+  width: initial !important;
+  max-width: initial !important;
 }
 
 .Main-content {
