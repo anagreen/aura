@@ -4,7 +4,7 @@
 .product {
     position: relative;
 
-    padding: 0 $grid-gutter-width/2;
+    padding: 0 $grid-gutter-width*1.5;
     margin: 0 auto;
 
     max-width: $max-content-width;
@@ -28,7 +28,15 @@
     @include tabletUp() {
         text-align: left;
 
-        padding-top: 60px;
+        /*padding-top: 60px;*/
+    }
+    
+    @media (max-width: 991px) {
+        padding: 0 40px;
+    }
+    
+    @media (max-width: 767px) {
+        padding: 0 15px;
     }
 
     & > .wrap {
@@ -48,8 +56,12 @@
             font-size: 3.125em;
 
             @include desktop() {
-                margin-left: 200px;
+                /*margin-left: 200px;*/
             }
+        }
+        
+        @media (max-width: 767px) {
+            margin: 0 0 20px;
         }
     }
 
@@ -58,7 +70,7 @@
         line-height: 2;
 
         @include desktop() {
-            margin-left: 200px;
+            /*margin-left: 200px;*/
         }
     }
 }
@@ -72,6 +84,11 @@
     .button {
         font-size: 0.9375em;
         text-transform: uppercase;
+        
+        @media (max-width: 767px) {
+            width: 80%;
+            margin: 0 0 15px;
+        }
     }
 
     @include tabletUp() {
@@ -85,6 +102,11 @@
     }
 
     @include desktop() {
-        margin-left: 200px;
+        /*margin-left: 200px;*/
+    }
+    
+    @media (max-width: 767px) {
+        display: block;
+        margin-top: 50px;
     }
 }

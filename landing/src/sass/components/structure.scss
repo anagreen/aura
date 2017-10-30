@@ -4,7 +4,7 @@
 .structure {
     position: relative;
 
-    padding: 0 $grid-gutter-width/2;
+    padding: 0 $grid-gutter-width*1.5;
     margin: 0 auto;
 
     max-width: $max-content-width;
@@ -28,12 +28,22 @@
     @include tabletUp() {
         text-align: left;
     }
+    
+    @media (max-width: 991px) {
+        padding: 0 40px;
+    }
+    
+    @media (max-width: 767px) {
+        padding: 0 15px;
+        margin: 80px 0 0 0;
+    }
 
     & > .wrap {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
+        align-items: flex-start;
 
         position: relative;
         margin: 0 auto;
@@ -45,7 +55,12 @@
             align-items: flex-start;
 
             @include tabletUp() {
-                margin-top: 150px;
+                margin-top: 80px;
+            }
+            
+            @media (max-width: 991px) {
+                display: block;
+                margin: 0;
             }
         }
     }
@@ -58,6 +73,10 @@
             margin-bottom: 65px;
 
             font-size: 3.125em;
+        }
+        
+        @media (max-width: 767px) {
+            margin: 0 0 20px;
         }
     }
 
@@ -72,7 +91,7 @@
 }
 
 .structure__block {
-    margin: 20px 0;
+    margin: 0px 0;
     width: 100%;
 
     @include tabletUp() {
@@ -81,13 +100,25 @@
 
     @include desktop() {
         &:first-child {
-            margin-left: 200px;
+            /*margin-left: 200px;*/
         }
 
         &--gap {
             transform: translateX(-100px);
         }
     }
+    
+    &.structure__block--gap{
+        @media (max-width: 991px) {
+            margin: 20px 0 0 0;
+        }
+    }
+
+    
+    @media (max-width: 767px) {
+        padding: 0 15px;
+    }
+
 }
 
 .currency {
@@ -100,15 +131,28 @@
     @include tabletUp() {
         margin: 30px 0 40px;
     }
+
+    @media (max-width: 767px) {
+        width: 200px;
+        margin: 20px auto 50px;
+    }
 }
 
 .diagram {
+    
+    @media (max-width: 991px) {
+        margin: 60px 0 0 0;
+    }
+    
+    @media (max-width: 767px) {
+        margin: 60px 0 0 0;
+    }
 
     &__media {
         max-width: 100%;
 
         @include tabletUp() {
-            margin: 90px 0 145px;
+            margin: 60px 0 60px;
         }
     }
 
