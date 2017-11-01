@@ -48,7 +48,7 @@ function processAttachment(attachment, senderID) {
         case 'audio':
             processAudio(attachment, senderID);
         default:
-            //sendTextMessage(senderID, 'here is no handler for such attachment type.');
+        //sendTextMessage(senderID, 'here is no handler for such attachment type.');
     }
 }
 
@@ -59,14 +59,14 @@ function processAudio(attachment, senderID) {
     var serviceResult = [];
     var sendRecognitionResult = (result) => {
         if (result.length == 2) {
+            var timeOffset = 0;
             result.forEach((item) => {
-                setTimeout((item) => {
-                    if (item.beyondverbal) {
-                        sendEmotions(senderID, item);
-                    } else {
-                        sendSpeech(senderID, item);
-                    }
-                }, 2000, item);
+                if (item.beyondverbal) {
+                    sendEmotions(senderID, item, timeOffset);
+                } else {
+                    sendSpeech(senderID, item, timeOffset);
+                }
+                timeOffset = timeOffset + 1000;
             });
         }
     }
@@ -84,26 +84,25 @@ function processAudio(attachment, senderID) {
         });
 }
 
-function sendEmotions(senderID, emotionsResult) {
+function sendEmotions(senderID, emotionsResult, timeOffset) {
     if (emotionsResult.beyondverbal.result) {
-        setTimeout(sendTextMessage, 1000, senderID
+        setTimeout(sendTextMessage, timeOffset+100, senderID
             , `EMOTIONS RECOGNITION: duration=${emotionsResult.beyondverbal.result.duration}; sessionStatus=${emotionsResult.beyondverbal.result.sessionStatus}`);
-            setTimeout(sendTextMessage, 1000, senderID, "analysisSegments:");
-        emotionsResult.beyondverbal.result.analysisSegments.forEach((segment) => { sendTextMessage(senderID, `EMOTIONS. ${JSON.stringify(segment)}`) });
-        setTimeout(sendTextMessage, 1000, senderID, `EMOTIONS. analysisSummary: ${JSON.stringify(emotionsResult.beyondverbal.result.analysisSummary)}`);
-        setTimeout(sendTextMessage, 1000, senderID, `EMOTIONS. recordingId: ${emotionsResult.beyondverbal.recordingId}`);
+        emotionsResult.beyondverbal.result.analysisSegments.forEach((segment) => { setTimeout(sendTextMessage, timeOffset+200, senderID, `EMOTIONS. segment: ${JSON.stringify(segment)}`) });
+        setTimeout(sendTextMessage, timeOffset+300, senderID, `EMOTIONS. analysisSummary: ${JSON.stringify(emotionsResult.beyondverbal.result.analysisSummary)}`);
+        setTimeout(sendTextMessage, timeOffset+400, senderID, `EMOTIONS. recordingId: ${emotionsResult.beyondverbal.recordingId}`);
     } else {
-        setTimeout(sendTextMessage, 1000, senderID, `EMOTIONS error: ${JSON.stringify(emotionsResult)}`);
+        setTimeout(sendTextMessage, timeOffset+100, senderID, `EMOTIONS error: ${JSON.stringify(emotionsResult)}`);
     }
 }
 
-function sendSpeech(senderID, speechResult) {
+function sendSpeech(senderID, speechResult, timeOffset) {
     if (speechResult.text.results) {
-        setTimeout(sendTextMessage, 1000, senderID
-            , 'TEXT ROCOGNITION');
-        speechResult.text.results.forEach((item) => { sendTextMessage(senderID, `TEXT. alternatives: ${JSON.stringify(item.alternatives)}`) });
+        setTimeout(sendTextMessage, timeOffset+100, senderID
+            , 'TEXT ROCOGNITION:');
+        speechResult.text.results.forEach((item) => { setTimeout(sendTextMessage, timeOffset+200, senderID, `TEXT. alternatives: ${JSON.stringify(item.alternatives)}`) });
     } else {
-        setTimeout(sendTextMessage, 1000, senderID, `TEXT error: ${JSON.stringify(speechResult)}`);
+        setTimeout(sendTextMessage, timeOffset+100, senderID, `TEXT error: ${JSON.stringify(speechResult)}`);
     }
 }
 
