@@ -1,0 +1,152 @@
+@import "../variables";
+@import "../mixins";
+
+.structure {
+    position: relative;
+
+    padding: 0 $grid-gutter-width/2;
+    margin: 0 auto;
+
+    max-width: $max-content-width;
+
+    text-align: center;
+
+    &:before {
+        content: "";
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 792px;
+
+        background: url(./structure-bg.png) no-repeat 0 0 transparent;
+        background-size: contain;
+    }
+
+    @include tabletUp() {
+        text-align: left;
+    }
+
+    & > .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        position: relative;
+        margin: 0 auto;
+
+        max-width: $content-width;
+
+        &--space {
+            margin-top: 50px;
+            align-items: flex-start;
+
+            @include tabletUp() {
+                margin-top: 150px;
+            }
+        }
+    }
+
+    &__title {
+        font-size: 2.7125em;
+        color: $brand-mute;
+
+        @include tabletUp() {
+            margin-bottom: 65px;
+
+            font-size: 3.125em;
+        }
+    }
+
+    &__text {
+        font-size: 1.3125em;
+        line-height: 2;
+
+        @include tabletUp() {
+            font-size: 1.8125em;
+        }
+    }
+}
+
+.structure__block {
+    margin: 20px 0;
+    width: 100%;
+
+    @include tabletUp() {
+        width: auto;
+    }
+
+    @include desktop() {
+        &:first-child {
+            margin-left: 200px;
+        }
+
+        &--gap {
+            transform: translateX(-100px);
+        }
+    }
+}
+
+.currency {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 40px 0;
+
+    @include tabletUp() {
+        margin: 30px 0 40px;
+    }
+}
+
+.diagram {
+
+    &__media {
+        max-width: 100%;
+
+        @include tabletUp() {
+            margin: 90px 0 145px;
+        }
+    }
+
+    .structure__text {
+        @include tabletUp() {
+            font-size: 2em;
+        }
+    }
+}
+
+.distribution-list {
+    list-style: none;
+    text-align: left;
+
+    &__item {
+        margin: 10px 0;
+        font-size: 1.1125em;
+
+        b {
+            width: 25px;
+            display: inline-block;
+        }
+    }
+
+    &__bullet {
+        display: inline-block;
+        margin: 0 3px;
+
+        width: 12px;
+        height: 12px;
+
+        border-radius: 50%;
+
+        &--green { background: #1e8428; }
+        &--dark-blue { background: #132b4b; }
+        &--blue { background: #2443fd; }
+        &--pink { background: #a81e78; }
+        &--orange { background: #f7931e; }
+        &--yellow { background: #d9e021; }
+    }
+}

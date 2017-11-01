@@ -1,0 +1,37 @@
+@import "../variables";
+@import "../mixins";
+
+.header {
+    padding: 0;
+    position: relative;
+
+    transition: all .4s ease-in-out;
+
+    .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin: 0 auto;
+
+        height: $header-height;
+        max-width: $header-width;
+
+        @include desktop() {
+            justify-content: flex-start;
+        }
+    }
+
+    &__logo {
+        width: 112px;
+        height: 89px;
+        cursor: pointer;
+    }
+
+    &--fixed {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+}

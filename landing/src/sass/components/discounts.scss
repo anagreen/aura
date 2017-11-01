@@ -1,0 +1,133 @@
+@import "../variables";
+@import "../mixins";
+
+$img-height: 690px;
+
+.discounts {
+    position: relative;
+
+    padding: 0 $grid-gutter-width/2;
+    margin: 40px auto;
+
+    @include tabletUp() {
+        margin-top: 200px;
+    }
+
+    max-width: $max-content-width;
+
+    & > .wrap {
+        display: flex;
+        justify-content: space-between;
+
+        position: relative;
+        margin: 0 auto;
+
+        max-width: $content-width;
+
+        @include tabletUp() {
+            height: $img-height;
+        }
+    }
+
+    &__title {
+        color: $brand-mute;
+        font-size: 2.7125em;
+
+        @include tabletUp() {
+            margin: 0 0 80px;
+
+            font-size: 3.125em;
+            text-align: center;
+        }
+    }
+
+    &__text {
+        line-height: 1.4;
+
+        @include tabletUp() {
+            margin: 0 0 50px;
+        }
+    }
+
+}
+
+.discounts__block {
+
+    &--image {
+        display: none;
+
+        @include desktop() {
+            display: block;
+            height: $img-height;
+
+            flex-grow: 1;
+            transform: translateX(40px);
+
+            background: url(./discounts-bg.png) no-repeat 0 50% transparent;
+            background-size: contain;
+
+        }
+    }
+
+    &--text {
+        max-width: 920px;
+    }
+}
+
+.discount-options {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    @include tabletUp() {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        height: 238px;
+
+        color: $brand-mute;
+        text-align: center;
+
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-size: contain;
+        background-position: 50% 50%;
+
+        &--1 {
+            background-image: url(./discount-1.png);
+            width: 345px;
+        }
+
+        &--2 {
+            background-image: url(./discount-2.png);
+            width: 287px;
+        }
+
+        &--3 {
+            background-image: url(./discount-3.png);
+            width: 283px;
+        }
+    }
+
+    &__title {
+        font-size: 1.375em;
+    }
+
+    &__text,
+    &__discount {
+        font-size: 2em;
+    }
+
+    &__discount {
+        color: $brand-color;
+        font-weight: 700;
+    }
+
+}
