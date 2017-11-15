@@ -29,6 +29,15 @@ $img-height: 1128px;
     @include desktop() {
         transform: translateY(-300px);
     }
+    
+    @media (max-width: 1100px){
+        transform: none;
+        margin-top: 110px;
+    }
+    
+    @media (max-width: 767px) {
+        margin: 80px 0 0 0;
+    }
 
     & > .wrap {
         position: relative;
@@ -52,7 +61,7 @@ $img-height: 1128px;
         margin: 40px auto;
 
         @include tabletUp() {
-            margin-top: 100px;
+            margin-top: 70px;
             max-width: 265px;
         }
     }
@@ -63,7 +72,7 @@ $img-height: 1128px;
     flex-wrap: wrap;
     justify-content: space-between;
     
-    margin: 40px auto;
+    margin: 20px auto;
     
     &__item {
         margin: 20px 0;
@@ -84,7 +93,7 @@ $img-height: 1128px;
         
         @include tabletUp() {
             width: auto;
-            margin: 0 20px;
+            margin: 20px 20px;
         }
     }
     
@@ -129,7 +138,23 @@ $img-height: 1128px;
         justify-content: center;
 
         @include tabletUp() {
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
+    }
+}
+
+.advisors__title{
+    margin-top: 50px;
+
+    @include tabletUp() {
+        margin-top: 160px;
+    }
+    
+    @media (max-width: 1100px){
+        margin-top: 100px;
+    }
+    
+    @media (max-width: 767px) {
+        margin: 80px 0 0 0;
     }
 }

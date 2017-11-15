@@ -11,6 +11,11 @@
     @include desktop() {
         margin: 70px 0 0;
     }
+    
+    @media (max-width: 767px) {
+        margin: 40px 0 0;
+        align-self: center;
+    }
 
     &__item {
         display: flex;

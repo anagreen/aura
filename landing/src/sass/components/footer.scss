@@ -4,12 +4,24 @@
 $footer-background: #0c0c0c;
 
 .footer {
-    padding: 20px 30px;
+    padding: 20px 30px 60px;
+	overflow: hidden;
 
     background: $footer-background;
 
     @include desktop() {
-        padding: 60px 100px 40px;
+        margin-top: -220px;
+        padding: 40px 60px 80px;
+        z-index: 2;
+    }
+    
+    @media (max-width: 1100px){
+        margin-top: 60px;
+    }
+    
+    @media (max-width: 767px) {
+        margin-top: 20px;
+        padding: 0 15px 40px;
     }
 
     position: relative;
@@ -29,7 +41,7 @@ $footer-background: #0c0c0c;
         justify-content: space-between;
         align-items: center;
 
-        margin-top: 20px;
+        margin-top: 40px;
     }
 
     &__logo {

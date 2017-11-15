@@ -65,3 +65,213 @@ $font-size: 16px;
         }
     }
 }
+
+
+
+
+
+
+.a-button{
+	background: #2444ff;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+
+	.text{
+        position: relative;
+        z-index: 0;
+        padding: 11px 40px 10px;
+        display: inline-block;
+	}
+
+	&.full .text{
+		padding: 0 0 0 20px;
+	}
+
+	.text-1{
+        height: 100%;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+		position: absolute;
+		z-index: 2;
+		padding: 0;
+		color: #2444ff;
+		width: 0;
+		transition: .5s;
+
+		span{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+			padding: 11px 40px 10px;
+		}
+
+	}
+
+	&.full .text-1{
+		padding: 0 0 0 0;
+
+		span{
+			padding: 0 0 0 20px;
+		}
+
+	}
+
+	&.a-button-hover:before{
+		content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+		background: #f8f6f8;
+		width: 0;
+		z-index: 1;
+		transition: 0.5s;
+	}
+
+	@media (min-width: 1200px){
+
+		&:not(.disabled){
+
+			&.a-button-hover:hover:before{
+				width: 100%;
+			}
+
+			&.a-button-hover:hover .text-1{
+				width: 100%;
+			}
+
+		}
+
+	}
+
+}
+
+
+
+.button--empty{
+    position: relative;
+    padding: 0;
+    border: 0px solid transparent;
+    transition: .25s;
+    transition-delay: .5s;
+
+    &:before{
+        z-index: 0;
+        content: '';
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #b1b1b1;
+    }
+
+    .button-empty-content{
+        display: block;
+        position: relative;
+        z-index: 1;
+        padding: 13px 42px 12px;
+    }
+
+    .button-empty-bg,
+    .button-empty-line-1,
+    .button-empty-line-2{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        z-index: 0;
+        height: 100%;
+    }
+
+    .button-empty-line-1,
+    .button-empty-line-2{
+        width: 100%;
+
+        &:after,
+        &:before{
+            content: '';
+            position: absolute;
+            display: block;
+            background: #2444ff;
+            transition: .25s;
+        }
+
+    }
+
+    .button-empty-line-1{
+
+        &:before{
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+        }
+        
+        &:after{
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 0;
+            transition-delay: .125s;
+        }
+
+    }
+    
+    .button-empty-line-2{
+
+        &:before{
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            transition-delay: .25s;
+        }
+        
+        &:after{
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            height: 0;
+            transition-delay: .375s;
+        }
+
+    }
+
+    .button-empty-bg{
+        height: calc(100% - 4px);
+        width: 0;
+        top: 2px;
+        left: 2px;
+        background: #fff;
+        transition: .25s;
+        transition-delay: .5s;
+    }
+
+    @media (min-width: 1200px){
+        &:hover{
+
+            .button-empty-bg{
+                width: calc(100% - 4px);
+            }
+
+            .button-empty-line-1:before,
+            .button-empty-line-2:before{
+                width: 100%;
+            }
+
+            .button-empty-line-1:after,
+            .button-empty-line-2:after{
+                height: 100%;
+            }
+
+        }
+    }
+
+}
