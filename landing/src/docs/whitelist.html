@@ -1,0 +1,70 @@
+<div class="page-wrap page-wrap-faq" id="page">
+   
+	<section class="page-hero" id="page-hero">
+		@@include('./_templates/_header.html')
+	</section>
+   
+	<div class="faq-outer">
+	
+		<div class="product__title">APPLY TO INVEST IN THE FUTURE WORKPLACE</div>
+		<div class="product__back"><a href="/">< Go back</a></div>
+		
+		
+		<div id="v-form-success" style="display: none;">
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>Thank you!</p>
+			<p>&nbsp;</p>
+			<p>We will closely review your application and get back to you very soon. Would you like to join our Telegram channel?</p>
+		</div>
+	
+		<form class="v-form" id="v-form" action="mailchimp.php">
+		
+			<div class="v-input v-input-6">
+				<div class="v-input-title">Name *</div>
+				<input type="text" name="name" value="">
+				<div class="v-input-title-bottom">First Name</div>
+			</div>
+		
+			<div class="v-input v-input-6">
+				<div class="v-input-title">&nbsp; </div>
+				<input type="text" name="surname" value="">
+				<div class="v-input-title-bottom">Last Name</div>
+			</div>
+		
+			<div class="v-input">
+				<div class="v-input-title">Email Address *</div>
+				<input type="email" name="email" value="">
+			</div>
+		
+			<div class="v-input v-input_investment">
+				<div class="v-input-title">Planned amount to invest *</div>
+				<input type="text" name="investment" value="">
+			</div>
+		
+			<div class="v-input">
+				<div class="v-input-title">Country of residency *</div>
+				<input type="text" name="country" value="">
+			</div>
+		
+			<div class="v-input">
+				<div class="v-input-title">How will you contribute to Aura development?</div>
+				<textarea name="comment"></textarea>
+			</div>
+			
+			<input type="submit" value="Submit" id="v-form-submit-button">
+			
+			<a href="" class="product-links__item button button--empty" id="v-form-submit">
+                <span class="button-empty-content">Submit</span>
+                <span class="button-empty-line-1"></span>
+                <span class="button-empty-line-2"></span>
+                <span class="button-empty-bg"></span>
+            </a>
+			
+		</form>
+		
+	</div>
+	
+	<style>#js-menuBtn{display:none;}</style>
+   
+</div>
