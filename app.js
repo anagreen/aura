@@ -1,5 +1,6 @@
 'use strict';
 
+var conf = require("./config");
 var restify = require('restify');
 var request = require('request');
 var url = require("url");
@@ -12,6 +13,7 @@ var Storage = require("./storage");
 var storage = new Storage();
 var Recognizer = require("./recognizer");
 var recognizer = new Recognizer();
+var extend = require('extend');
 
 var server = restify.createServer();
 server.server.setTimeout(60000 * 10);
@@ -25,10 +27,22 @@ server.get('status', function (req, res, next) {
   next();
 });
 
+server.get('checkDbConnection', function (req, res, next) {
+  storage.connectToDB((err, result) => {
+    if (err) {
+      res.send(200, err);
+      next();
+    } else {
+      res.send(200, result);
+      next();
+    }
+  });
+});
+
 server.get('beyondVerbal', function (req, res, next) {
   var audioFile = req.query.audio;
   console.log(`audio: ${audioFile}`);
-  aura.recognizeEmotions(audioFile, (err, result) => {
+  recognizer.recognizeEmotions(audioFile, (err, result) => {
     if (err) {
       console.log(`BEYONDVERBAL ERROR: ${err}`);
       res.send(400, `BEYONDVERBAL ERROR: ${err}`);
@@ -43,23 +57,34 @@ server.get('beyondVerbal', function (req, res, next) {
 
 server.get('storeAndRecognize', function (req, res, next) {
   var audioURL = req.query.audio;
-  var serviceResult = []
+  var serviceResult = {};
   aura.storeAndRecognize(audioURL,
-    (name) => { return `${name}.flac` },
+    (name) => { 
+      serviceResult.fileName = `${name}.flac`;
+      serviceResult._id = serviceResult.fileName
+      return serviceResult.fileName;
+    },
     (err, result) => {
       if (err) {
-        serviceResult.push(err);
+        extend(serviceResult, err);
         console.log(`ERROR storeAndRecognize: ${err}`);
-        if (serviceResult.length == 2) {
+        if (serviceResult.emotions && serviceResult.text) {
           res.send(400, err);
           next();
         }
       } else {
-        serviceResult.push(result);
-        if (serviceResult.length == 2) {
-          console.log(`Success storeAndRecognize`);
-          res.send(200, JSON.stringify(serviceResult));
-          next();
+        extend(serviceResult, result);
+        if (serviceResult.emotions && serviceResult.text) {
+          storage.insertToDb(serviceResult, (err, r) => {
+            if(err) {
+              res.send(400, err);
+              next();
+            } else {
+              console.log(`Success storeAndRecognize: ${r}`);
+              res.send(200, JSON.stringify(serviceResult));
+              next();
+            }
+          });
         }
       }
     }
@@ -88,13 +113,13 @@ server.get('recognize', function (req, res, next) {
 server.get('/webhook', function (req, res, next) {
   console.log(`REQUEST: ${JSON.stringify(req.query)}`);
   if (req.query['hub.mode'] === 'subscribe' &&
-      req.query['hub.verify_token'] === 'VERIFY_TOKEN') {
-      console.log("Validating webhook");
-      res.sendRaw(200, req.query['hub.challenge']);
-      next();
+    req.query['hub.verify_token'] === conf.facebook_verify_token) {
+    console.log("Validating webhook");
+    res.sendRaw(200, req.query['hub.challenge']);
+    next();
   } else {
-      console.error("Failed validation. Make sure the validation tokens match.");
-      res.send(403);
+    console.error("Failed validation. Make sure the validation tokens match.");
+    res.send(403);
   }
 });
 
@@ -104,31 +129,31 @@ server.post('/webhook', function (req, res, next) {
   // Make sure this is a page subscription
   if (data.object === 'page') {
 
-      // Iterate over each entry - there may be multiple if batched
-      data.entry.forEach(function (entry) {
-          var pageID = entry.id;
-          var timeOfEvent = entry.time;
+    // Iterate over each entry - there may be multiple if batched
+    data.entry.forEach(function (entry) {
+      var pageID = entry.id;
+      var timeOfEvent = entry.time;
 
-          // Iterate over each messaging event
-          entry.messaging.forEach(function (event) {
-              if (event.message) {
-                  messenger.receivedMessage(event);
-              } else {
-                  //console.log("Webhook received unknown event: ", event);
-              }
-          });
+      // Iterate over each messaging event
+      entry.messaging.forEach(function (event) {
+        if (event.message) {
+          messenger.receivedMessage(event);
+        } else {
+          //console.log("Webhook received unknown event: ", event);
+        }
       });
+    });
 
-      // Assume all went well.
-      //
-      // You must send back a 200, within 20 seconds, to let us know
-      // you've successfully received the callback. Otherwise, the request
-      // will time out and we will keep trying to resend.
-      res.send(200);
+    // Assume all went well.
+    //
+    // You must send back a 200, within 20 seconds, to let us know
+    // you've successfully received the callback. Otherwise, the request
+    // will time out and we will keep trying to resend.
+    res.send(200);
   }
 });
 
 
-server.listen(8081, function () {
+server.listen(conf.web_port, function () {
   console.log('%s listening at %s', server.name, server.url);
 });

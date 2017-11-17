@@ -15,28 +15,7 @@ var recognizer = new Recognizer();
 module.exports = Aura;
 
 function Aura(){
-    this.recognizeEmotions = recognizeEmotions;
     this.storeAndRecognize = storeAndRecognize;
-}
-
-
-function recognizeEmotions(fileName, callback) {
-    media.convertAndSaveToTmp(storage.createFileReadStream(fileName),
-        {
-            inputFormat: 'flac',
-            frequency: 8000,
-            outputFormat: 'wav'
-        },
-        (err, data) => {
-            recognizer.recognizeEmotions(data, (err, result) => {
-                if (err) {
-                    callback({ beyondverbal: err });
-                } else {
-                    callback(null, { beyondverbal: result });
-                }
-            });
-        }
-    );
 }
 
 
@@ -63,7 +42,7 @@ function storeAndRecognize(audioURL, getOutputName, callback) {
                 return;
             } else {
                 recognizer.recognizeText(storage.getFileUrl(outputFileName), callback);
-                recognizeEmotions(outputFileName, callback);
+                recognizer.recognizeEmotions(outputFileName, callback);
             }
         }
     );

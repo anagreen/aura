@@ -1,26 +1,44 @@
 'use strict';
 
+const conf = require('./config');
 var speech = require('@google-cloud/speech');
 var speechClient = speech.v1({
-    projectId: 'aura-bot',
-    keyFilename: 'aura-bot-0000000000.json'
+    projectId: conf.google_project_id,
+    keyFilename: conf.google_key_file
 });
+var Storage = require('./storage');
+var storage = new Storage();
+var Media = require('./media');
+var media = new Media();
 var Analyzer = require('./analyzer-v3');
-var analyzer = new Analyzer('BEYONDVERBAL_API_KEY');
+var analyzer = new Analyzer(conf.beyonverbal_api_key);
 
 module.exports = Recognizer;
 
-function Recognizer(){
+function Recognizer() {
     this.recognizeEmotions = recognizeEmotions;
     this.recognizeText = recognizeText;
 }
 
 
-function recognizeEmotions(data, callback) {
-    analyzer.analyze(data, (err, analysis) => {
-        console.log(`EMOTIONS: result: ${JSON.stringify(analysis)}.    error: ${err}`);
-        callback(err, analysis);
-    });
+function recognizeEmotions(fileName, callback) {
+    media.convertAndSaveToTmp(storage.createFileReadStream(fileName),
+        {
+            inputFormat: 'flac',
+            frequency: 8000,
+            outputFormat: 'wav'
+        },
+        (err, data) => {
+            if (err) {
+                callback({ emotions: err });
+            } else {
+                analyzer.analyze(data, (err, analysis) => {
+                    console.log(`EMOTIONS: result: ${JSON.stringify(analysis)}.    error: ${err}`);
+                    callback(err, { emotions: analysis });
+                });
+            }
+        }
+    );
 }
 
 
@@ -49,7 +67,7 @@ function recognizeText(audioUrl, callback) {
 
         operation.on('complete', (result, metadata, finalApiResponse) => {
             console.log(`COMPLETE: \n RESULT:${JSON.stringify(result)}`);
-            callback(null, {text: result});
+            callback(null, { text: result });
         });
 
         // Adding a listener for the "progress" event causes the callback to be
@@ -61,10 +79,10 @@ function recognizeText(audioUrl, callback) {
         // Adding a listener for the "error" event handles any errors found during polling.
         operation.on('error', (err) => {
             console.log(`ERROR: \n ERROR: ${JSON.stringify(err)}`);
-            callback({text: err});
+            callback({ text: err });
         })
     })
-        .catch( (err) => {
+        .catch((err) => {
             console.error(err);
             callback(err);
         });

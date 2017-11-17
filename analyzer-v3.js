@@ -78,10 +78,12 @@ function analyzeFile(token, stream, options, callback) {
                 if (err) {
                     errorCalback(err) 
                 } else {
-                    // if (!streaming) {
-                    var jsonResp = JSON.parse(body)
-                    callback(null, jsonResp);
-                    // }
+                    try{
+                       var jsonResp = JSON.parse(body);
+                       callback(null, jsonResp);
+                    } catch (e){
+                       errorCalback(e);
+                    }
                 }
             });
 

@@ -1,8 +1,12 @@
 'use strict';
 
+const conf = require('./config');
 var request = require('request');
 var Aura = require("./aura");
 var aura = new Aura();
+var extend = require('extend');
+var Storage = require("./storage");
+var storage = new Storage();
 
 module.exports = Messenger;
 
@@ -56,28 +60,33 @@ function processAudio(attachment, senderID) {
     console.log(`User ID: ${senderID}`);
     var audioURL = attachment.payload.url
     console.log(`AUDIO: ${audioURL}`);
-    var serviceResult = [];
+    var serviceResult = {facebookId: senderID};
     var sendRecognitionResult = (result) => {
-        if (result.length == 2) {
-            var timeOffset = 0;
-            result.forEach((item) => {
-                if (item.beyondverbal) {
-                    sendEmotions(senderID, item, timeOffset);
-                } else {
-                    sendSpeech(senderID, item, timeOffset);
-                }
-                timeOffset = timeOffset + 1000;
+        if (serviceResult.emotions && serviceResult.text) {
+            sendEmotions(senderID, serviceResult.emotions, 1000);
+            sendSpeech(senderID, serviceResult.text, 3000);
+            sendFileName(senderID, serviceResult.fileName, 4000)
+            storage.insertToDb(serviceResult, (err, r) => {
+                if(err) {
+                    sendTextMessage(senderID, `Cannot insert into DB: ${err}`);
+                  } else {
+                    sendTextMessage(senderID, `Stored in DB: ${JSON.stringify(r)}`);
+                  }
             });
         }
     }
-    aura.storeAndRecognize(audioURL, (fileName) => { return `${senderID}-${fileName}.flac` },
+    aura.storeAndRecognize(audioURL, (fileName) => {
+        serviceResult.fileName = `${senderID}-${fileName}.flac`;
+        serviceResult._id = serviceResult.fileName;
+        return serviceResult.fileName
+    },
         (err, result) => {
             if (err) {
-                serviceResult.push(err);
+                extend(serviceResult, err);
                 console.log(`ERROR storeAndRecognize: ${err}`);
                 sendRecognitionResult(serviceResult);
             } else {
-                serviceResult.push(result);
+                extend(serviceResult, result);
                 console.log(`SUCCESSFULLY storeAndRecognize: ${err}`);
                 sendRecognitionResult(serviceResult);
             }
@@ -85,25 +94,37 @@ function processAudio(attachment, senderID) {
 }
 
 function sendEmotions(senderID, emotionsResult, timeOffset) {
-    if (emotionsResult.beyondverbal.result) {
-        setTimeout(sendTextMessage, timeOffset+100, senderID
-            , `EMOTIONS RECOGNITION: duration=${emotionsResult.beyondverbal.result.duration}; sessionStatus=${emotionsResult.beyondverbal.result.sessionStatus}`);
-        emotionsResult.beyondverbal.result.analysisSegments.forEach((segment) => { setTimeout(sendTextMessage, timeOffset+200, senderID, `EMOTIONS. segment: ${JSON.stringify(segment)}`) });
-        setTimeout(sendTextMessage, timeOffset+300, senderID, `EMOTIONS. analysisSummary: ${JSON.stringify(emotionsResult.beyondverbal.result.analysisSummary)}`);
-        setTimeout(sendTextMessage, timeOffset+400, senderID, `EMOTIONS. recordingId: ${emotionsResult.beyondverbal.recordingId}`);
+    if (emotionsResult.result) {
+        setTimeout(sendTextMessage, timeOffset + 100, senderID
+            , `EMOTIONS RECOGNITION: duration=${emotionsResult.result.duration}; sessionStatus=${emotionsResult.result.sessionStatus}`);
+        var i = 0;
+        if(emotionsResult.result.analysisSegments) emotionsResult.result.analysisSegments.forEach((segment) => { 
+            setTimeout(sendTextMessage, timeOffset + 200 + i*100, senderID, `EMOTIONS. segment ${i}: offset: ${segment.offset}, duration: ${segment.duration}, end: ${segment.duration}`);
+            setTimeout(sendTextMessage, timeOffset + 220 + i*100, senderID, `EMOTIONS. segment ${i}: Temper: ${JSON.stringify(segment.analysis.Temper)}`);
+            setTimeout(sendTextMessage, timeOffset + 240 + i*100, senderID, `EMOTIONS. segment ${i}: Valence: ${JSON.stringify(segment.analysis.Valence)}`);
+            setTimeout(sendTextMessage, timeOffset + 260 + i*100, senderID, `EMOTIONS. segment ${i}: Arousal: ${JSON.stringify(segment.analysis.Arousal)}`);
+            setTimeout(sendTextMessage, timeOffset + 280 + i*100, senderID, `EMOTIONS. segment ${i}: Mood: ${JSON.stringify(segment.analysis.Mood)}`);
+            i = i + 1;
+        });
+        setTimeout(sendTextMessage, timeOffset + 1000, senderID, `EMOTIONS. analysisSummary: ${JSON.stringify(emotionsResult.result.analysisSummary)}`);
+        setTimeout(sendTextMessage, timeOffset + 1100, senderID, `EMOTIONS. recordingId: ${emotionsResult.recordingId}`);
     } else {
-        setTimeout(sendTextMessage, timeOffset+100, senderID, `EMOTIONS error: ${JSON.stringify(emotionsResult)}`);
+        setTimeout(sendTextMessage, timeOffset + 100, senderID, `EMOTIONS error: ${JSON.stringify(emotionsResult)}`);
     }
 }
 
 function sendSpeech(senderID, speechResult, timeOffset) {
-    if (speechResult.text.results) {
-        setTimeout(sendTextMessage, timeOffset+100, senderID
+    if (speechResult.results) {
+        setTimeout(sendTextMessage, timeOffset + 100, senderID
             , 'TEXT ROCOGNITION:');
-        speechResult.text.results.forEach((item) => { setTimeout(sendTextMessage, timeOffset+200, senderID, `TEXT. alternatives: ${JSON.stringify(item.alternatives)}`) });
+        speechResult.results.forEach((item) => { setTimeout(sendTextMessage, timeOffset + 200, senderID, `TEXT. alternatives: ${JSON.stringify(item.alternatives)}`) });
     } else {
-        setTimeout(sendTextMessage, timeOffset+100, senderID, `TEXT error: ${JSON.stringify(speechResult)}`);
+        setTimeout(sendTextMessage, timeOffset + 100, senderID, `TEXT error: ${JSON.stringify(speechResult)}`);
     }
+}
+
+function sendFileName(senderID, fileName, timeOffset) {
+    setTimeout(sendTextMessage, timeOffset + 100, senderID, `FILE NAME: ${fileName}`);
 }
 
 
@@ -122,7 +143,7 @@ function sendTextMessage(recipientId, messageText) {
 function callSendAPI(messageData) {
     request({
         uri: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: { access_token: 'ACCESS_TOKEN' },
+        qs: { access_token: conf.facebook_access_token },
         method: 'POST',
         json: messageData
 
