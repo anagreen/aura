@@ -7,6 +7,8 @@
 `gulp --type production`
 
 
+
+
 ### Requirements: 
    pre installed   ffmpeg
    pre installed node.js v6.11.1
@@ -14,9 +16,7 @@
 
 ### instruction: 
 1) npm --install
-2) Set keyFilename for google speech and storage in storage.js and recognizer.js
-3) Set API_KEY for beyonverbal in recognizer.js
-4) Set ACCESS_TOKEN in messenger,js and VERIFY_TOKEN in app.js
+2) Set configuration in config.js
 5) start application: npm start
 
 
