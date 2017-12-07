@@ -1,6 +1,7 @@
 var request = require('request')
 var extend = require('extend')
-
+var config = require('./config')
+// require('request-debug')(request)
 
 var defaults = {
     tokenUrl: 'https://token.beyondverbal.com/token',
@@ -73,16 +74,16 @@ function analyzeFile(token, stream, options, callback) {
         }
 
         var recordingUrl = options.serverUrl + body.recordingId;
-        request.post(recordingUrl, { auth: { 'bearer': token }, body: stream },
+        request.post(recordingUrl, { auth: { 'bearer': token }, body: stream, timeout: config.beyonverbal_timeout },
             function (err, resp, body) {
                 if (err) {
-                    errorCalback(err) 
+                    errorCalback(err)
                 } else {
-                    try{
-                       var jsonResp = JSON.parse(body);
-                       callback(null, jsonResp);
-                    } catch (e){
-                       errorCalback(e);
+                    try {
+                        var jsonResp = JSON.parse(body);
+                        callback(null, jsonResp);
+                    } catch (e) {
+                        errorCalback(e);
                     }
                 }
             });

@@ -16,15 +16,18 @@
   "dependencies": {
     "@google-cloud/speech": "^0.10.3",
     "@google-cloud/storage": "^1.4.0",
+    "bluebird": "^3.5.1",
     "extend": "^3.0.1",
     "fluent-ffmpeg": "^2.1.2",
     "fs": "0.0.1-security",
     "mongodb": "^2.2.33",
     "path": "^0.12.7",
+    "promise": "^8.0.1",
     "request": "^2.83.0",
     "request-debug": "^0.2.0",
     "restify": "^6.0.1",
     "tmp": "0.0.33",
+    "tmp-promise": "^1.0.4",
     "url": "^0.11.0"
   }
 }

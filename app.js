@@ -1,21 +1,18 @@
 'use strict';
 
-var conf = require("./config");
-var restify = require('restify');
-var request = require('request');
-var url = require("url");
-var path = require("path");
-var Aura = require("./aura");
-var aura = new Aura();
-var Messenger = require("./messenger");
-var messenger = new Messenger();
-var Storage = require("./storage");
-var storage = new Storage();
-var Recognizer = require("./recognizer");
-var recognizer = new Recognizer();
-var extend = require('extend');
+const conf = require("./config");
+const Promise = require('bluebird');
+const restify = require('restify');
+const request = require('request');
+const url = require("url");
+const path = require("path");
+const Aura = require("./aura");
+const aura = new Aura();
+const Recognizer = require("./recognizer");
+const recognizer = new Recognizer();
+const extend = require('extend');
 
-var server = restify.createServer();
+const server = restify.createServer();
 server.server.setTimeout(60000 * 10);
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
@@ -28,129 +25,155 @@ server.get('status', function (req, res, next) {
 });
 
 server.get('checkDbConnection', function (req, res, next) {
-  storage.connectToDB((err, result) => {
-    if (err) {
-      res.send(200, err);
-      next();
-    } else {
+  Promise.promisify(storage.connectToDB, { context: storage })()
+    .then(result => {
       res.send(200, result);
       next();
-    }
-  });
+    }).catch(err => {
+      res.send(200, err);
+      next();
+    });
 });
 
 server.get('beyondVerbal', function (req, res, next) {
   var audioFile = req.query.audio;
   console.log(`audio: ${audioFile}`);
-  recognizer.recognizeEmotions(audioFile, (err, result) => {
-    if (err) {
-      console.log(`BEYONDVERBAL ERROR: ${err}`);
-      res.send(400, `BEYONDVERBAL ERROR: ${err}`);
-      next();
-    } else {
-      console.log(`BEYONDVERBAL: ${JSON.stringify(result)}`);
-      res.send(200, JSON.stringify(result));
-      next();
-    }
+  recognizer.recognizeEmotions(audioFile).then(result => {
+    console.log(`BEYONDVERBAL: ${JSON.stringify(result)}`);
+    res.send(200, JSON.stringify(result));
+    next();
+  }).catch(err => {
+    console.log(`BEYONDVERBAL ERROR: ${err}`);
+    res.send(400, `BEYONDVERBAL ERROR: ${err}`);
+    next();
   })
 });
 
 server.get('storeAndRecognize', function (req, res, next) {
-  var audioURL = req.query.audio;
-  var serviceResult = {};
+  let audioURL = req.query.audio;
+  let firstName = req.query.firstName;
+  let lastName = req.query.lastName;
+  let messengerId = req.query.messengerId;
+
   aura.storeAndRecognize(audioURL,
-    (name) => { 
-      serviceResult.fileName = `${name}.flac`;
-      serviceResult._id = serviceResult.fileName
-      return serviceResult.fileName;
-    },
-    (err, result) => {
-      if (err) {
-        extend(serviceResult, err);
-        console.log(`ERROR storeAndRecognize: ${err}`);
-        if (serviceResult.emotions && serviceResult.text) {
-          res.send(400, err);
-          next();
-        }
-      } else {
-        extend(serviceResult, result);
-        if (serviceResult.emotions && serviceResult.text) {
-          storage.insertToDb(serviceResult, (err, r) => {
-            if(err) {
-              res.send(400, err);
-              next();
-            } else {
-              console.log(`Success storeAndRecognize: ${r}`);
-              res.send(200, JSON.stringify(serviceResult));
-              next();
-            }
-          });
+    name => `${name}.flac`, firstName, lastName, messengerId)
+    .then(result => {
+      console.log(`Success storeAndRecognize: ${JSON.stringify(result)}`);
+      let userResponse = JSON.stringify(formatEmotionalOutputObj(result));
+      //console.log(`USER RESP: ${JSON.stringify(userResponse)}`);
+      res.send(200, userResponse);
+      next();
+    }).catch(err => {
+      console.log(`ERROR storeAndRecognize: ${err}`);
+      res.send(200, 'Sorry we are not able to analyze your response now. Please check your profile later on our site.');
+      next();
+    });
+});
+
+const VALENCE = 'The person feels about the subject';
+const AROUSAL = 'Level of involvement and stimulation';
+const TEMPER = 'Entire mood range';
+const MOOD_GROUPS = 'Emotional state';
+const COMBINED_EMOTIONS = 'A combination of various basic emotions';
+
+function formatEmotionalOutputObj(resultObj) {
+  return {
+    valence: retriveAndFormatAnalysesSegment(resultObj, VALENCE),
+    arousal: retriveAndFormatAnalysesSegment(resultObj, AROUSAL),
+    temper: retriveAndFormatAnalysesSegment(resultObj, TEMPER),
+    moodGroup: retriveAndFormatAnalysesSegment(resultObj, MOOD_GROUPS)
+  }
+}
+
+function retriveAndFormatAnalysesSegment(data, segmentDesc) {
+  let result;
+  try {
+    switch (segmentDesc) {
+      case VALENCE:
+        result = `${VALENCE}: ${data.emotions.result.analysisSummary.AnalysisResult.Valence.Mode}`;
+        break;
+      case AROUSAL:
+        result = `${AROUSAL}: ${data.emotions.result.analysisSummary.AnalysisResult.Arousal.Mode}`;
+        break;
+      case TEMPER:
+        result = `${TEMPER}: ${data.emotions.result.analysisSummary.AnalysisResult.Temper.Mode}`;
+        break;
+      case MOOD_GROUPS:
+        result = `${MOOD_GROUPS}: ${data.emotions.result.analysisSegments.map(moodGroup => {
+          let mood = moodGroup.analysis.Mood;
+          return `${mood.Composite.Primary.Phrase} ${mood.Composite.Secondary.Phrase}`;
+        }).join(';')}`;
+        break;
+      default:
+        console.log(`Uknown segment description: ${segmentDesc}`);
+        result = '';
+    }
+  } catch (err) {
+    return 'Cannot retrieve';
+  }
+  return result;
+}
+
+server.get('storeAndRecognizeChatfuelEndpoint', function (req, res, next) {
+  let audioURL = req.query.audio;
+  let firstName = req.query.firstName;
+  let lastName = req.query.lastName;
+  let messengerId = req.query.messengerId;
+  let nextBlock = req.query.nextBlock;
+
+  res.send(200, {
+    messages: [{ text: 'We are analysing your response. Please wait.' }]
+  });
+
+  aura.storeAndRecognize(audioURL,
+    name => `${name}.flac`, firstName, lastName, messengerId)
+    .then(result => {
+      console.log(`Analyses process completed: ${JSON.stringify(result)}`);
+      let userResponse = formatEmotionalOutputObj(result);
+      //console.log(`USER RESP: ${JSON.stringify(userResponse)}`);
+      let options = {
+        uri: buildBroadcastApiUrl(messengerId, nextBlock),
+        method: 'POST',
+        json: {
+          'valence': userResponse.valence,
+          'arousal': userResponse.arousal,
+          'temper': userResponse.temper,
+          'moodGroup': userResponse.moodGroup
         }
       }
-    }
-  );
+      Promise.promisify(request)(options)
+        .then(() => console.log('Success storeAndRecognizeChatfuelEndpoint.'))
+        .catch(err => console.log('Cannot send a response. ', err));
+      next();
+    }).catch(err => {
+      console.log(`Some problem during analyses process: ${err}`);
+      let options = {
+        uri: buildBroadcastApiUrl(messengerId, nextBlock),
+        method: 'POST',
+        json: { 'valence': "Cannot provide a result now. Please check it on our site later." }
+      }
+      Promise.promisify(request)(options)
+        .then(() => console.log('Failure storeAndRecognizeChatfuelEndpoint.'))
+        .catch(err => console.log('Cannot send error resp !', err));
+      next();
+    });
 });
+
+function buildBroadcastApiUrl(messengerId, nextBlockId) {
+  return `${conf.chatfuel_url}/bots/${conf.chatfuel_bot_id}/users/${messengerId}/send?chatfuel_token=${conf.chatfuel_token}&chatfuel_block_id=${nextBlockId}`;
+}
 
 server.get('recognize', function (req, res, next) {
   var audioFileName = req.query.audio;
-  recognizer.recognizeText(storage.getFileUrl(audioFileName),
-    (err, result) => {
-      if (err) {
-        console.log(`ERROR recognize: ${err}`);
-        res.send(400, err);
-        next();
-      } else {
-        console.log(`Success recognize`);
-        res.send(200, result);
-        next();
-      }
-    });
-});
-
-
-// Facebook Messenger
-
-server.get('/webhook', function (req, res, next) {
-  console.log(`REQUEST: ${JSON.stringify(req.query)}`);
-  if (req.query['hub.mode'] === 'subscribe' &&
-    req.query['hub.verify_token'] === conf.facebook_verify_token) {
-    console.log("Validating webhook");
-    res.sendRaw(200, req.query['hub.challenge']);
+  recognizer.recognizeText(storage.getFileUrl(audioFileName)).then(result => {
+    console.log(`Success recognize`);
+    res.send(200, result);
     next();
-  } else {
-    console.error("Failed validation. Make sure the validation tokens match.");
-    res.send(403);
-  }
-});
-
-server.post('/webhook', function (req, res, next) {
-  var data = req.body;
-
-  // Make sure this is a page subscription
-  if (data.object === 'page') {
-
-    // Iterate over each entry - there may be multiple if batched
-    data.entry.forEach(function (entry) {
-      var pageID = entry.id;
-      var timeOfEvent = entry.time;
-
-      // Iterate over each messaging event
-      entry.messaging.forEach(function (event) {
-        if (event.message) {
-          messenger.receivedMessage(event);
-        } else {
-          //console.log("Webhook received unknown event: ", event);
-        }
-      });
-    });
-
-    // Assume all went well.
-    //
-    // You must send back a 200, within 20 seconds, to let us know
-    // you've successfully received the callback. Otherwise, the request
-    // will time out and we will keep trying to resend.
-    res.send(200);
-  }
+  }).catch(err => {
+    console.log(`ERROR recognize: ${err}`);
+    res.send(400, err);
+    next();
+  });
 });
 
 

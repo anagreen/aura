@@ -59,7 +59,7 @@ function insertToDb(data, callback){
             callback(err);
         }
 
-        console.log(`Insert data to the mongo collection: ${JSON.stringify(data)}`);
+        //console.log(`Insert data to the mongo collection: ${JSON.stringify(data)}`);
         var col = db.collection(conf.mongodb_collection);
         col.insertOne(JSON.parse(JSON.stringify(data)), (err, result) => {
             if(err){
