@@ -83,6 +83,7 @@ function analyzeFile(token, stream, options, callback) {
                         var jsonResp = JSON.parse(body);
                         callback(null, jsonResp);
                     } catch (e) {
+                        console.log(`BEYONDVERBAL ERROR. Response: ${body}`);
                         errorCalback(e);
                     }
                 }

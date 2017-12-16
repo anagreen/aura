@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 node_modules
 *.log
-=======
 .DS_Store
 .idea
-node_modules/
-dist/
->>>>>>> dab77f5d8e8a4a0594e9403e16fff86fc5908340
+dist

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ava-ai-189108",
+  "private_key_id": "6cee7dde5cd900678a6f10acbe865f6a91e27e7d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDOFPQRKgjxxVB0\nS/VNrgoEgkuifahp1AE+um7DRYSArgkT1TuDXXbhpojChbeu+i9LLCPAxXfNyr8/\nS7XtWi+hoXDByak3CTWmc1tqv7Yu3pB9IaIUDKgkTTe0bKjYmDTKFJPuv+MGOqpH\naXU3GR+ifq/hKt0SGT/HoXaeMNNxjMNCR5TViNoNaAGxBo+ZaCxJCfKutqr3SXz4\nQ/JYc3DDt26NmF3UOW1aysGKpuwGgtbjSOIc1jO3ftpv6VUYgFdQDBwPlptnAuVx\n2BB0DKirSYYIi+J+/s9f91EPzncJQ5AeNPy4phY83GJ4bNKG9PZv/uAw2mXuBy8Q\noZuGLVG7AgMBAAECggEAWYNjcjMqeG3G4QT/U5L1mfjIhpeDOBiUw9zx8JK5F7XA\njqNPuuM1mJUgETJI01GrikDtdLWxMKvQv1sQ9jx2tQOtORdxj0zKR3cS7b7BEQGu\njBO4VXIb9MyvlgienJocT+x5RzqFD3ca8HLfraOViJzzo1/db5eVCw7YuaSmq0p8\nGWL3J1O50I9A0Upb/PZ5ELaOMd1nYDjD5zc6ULDJ0oigaPtaRfF0o7MqsNlUquMh\nvk8ELq1rcP2i8/I0P/QhEP6rFdwceH+YfRTP1tMGjpVjYHKVEiqAAZNCawLi4hYi\nVQsc4VVE6/VoHAjgQmq314ZzDJ6uEVjInwIGvThkLQKBgQDnBBb0W+q1VWL6KkLX\nQnAWqWVfmyVufWprPavQcr/v7bH8p03/q9DRHMyVbW0dTLkwpzaRhbII1PS9taWp\nBeErB6EMi/ufd60+U2vuTTlwfifEpZaTxmCwMiHaP0LLfdg1lUtVGQRS2nWBLiR9\nh7fvH90oQ6R+GNaecEvLNgos/wKBgQDkXomLiDyr1iQkUlsn2Ip8d1gSWLIikzQV\nbf/d3++Lize9Km2lKN1/FwFdpvC5vRFExfRtMzEdzQXiPZ6cxQo+aD81us2GxdOg\nkydXisLkx0pzABSMkq4QnBKNxqDHFgPmCsN2SvTqOktlkIuR+wjLdAd9WGxiN/hv\nbQmj+/PPRQKBgA7XEmpsJS206IDNijGt0OmDxEFaBBOO9vEgqxLe7DmLeW2Tic0s\nymNEiFfpCaNiNFtNwpGilwc+NuKg8p1jBU3wVYYqz+U0mOpyDXLnfxMc540YXg3s\nJnXrIoWUnsPXt7Xpe0diLgbshbPgtPNjbotr7pcRkVWQXukaqaPKOukdAoGAQMV/\nhY/ShXprLdIeAKMuRDclR67Yd24A68MTOz70lkOaP5D1IE8C47UGsiVTSZsSdsse\nlIpcd/Nao9yOTDCmwySWKQsemAcsCvMxyWaV+IV93Dg9m9FOhW9+469ekpjv6iNL\nZRXFeVmnYNsqevEUgYAbT7Xwp7rwP8pRXa1sbXECgYBUdjL3wb9TosXZElYJ4Shv\ne5ge8UDbL6TtCxXbnsYUYqr7RqiKWlLFasnzbU4w8RAWQJU0XGHrzzzUuVzsxTn5\nVomCO/rt0sORNxC2vxK0tXSlEF5PraGfocz022VYwCOPP7FOxIC+i9sY55CQTnzX\n8GnujGOWldYUbmEhqu9gfA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "myaura@ava-ai-189108.iam.gserviceaccount.com",
+  "client_id": "116106430106324155812",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/myaura%40ava-ai-189108.iam.gserviceaccount.com"
+}

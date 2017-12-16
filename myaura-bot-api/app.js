@@ -11,6 +11,8 @@ const aura = new Aura();
 const Recognizer = require("./recognizer");
 const recognizer = new Recognizer();
 const extend = require('extend');
+var Storage = require('./storage');
+var storage = new Storage();
 
 const server = restify.createServer();
 server.server.setTimeout(60000 * 10);
@@ -60,11 +62,10 @@ server.get('storeAndRecognize', function (req, res, next) {
     .then(result => {
       console.log(`Success storeAndRecognize: ${JSON.stringify(result)}`);
       let userResponse = JSON.stringify(formatEmotionalOutputObj(result));
-      //console.log(`USER RESP: ${JSON.stringify(userResponse)}`);
       res.send(200, userResponse);
       next();
     }).catch(err => {
-      console.log(`ERROR storeAndRecognize: ${err}`);
+      console.log(`ERROR storeAndRecognize: ${JSON.stringify(err)}`);
       res.send(200, 'Sorry we are not able to analyze your response now. Please check your profile later on our site.');
       next();
     });

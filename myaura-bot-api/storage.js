@@ -5,7 +5,7 @@ const storage = require('@google-cloud/storage')({
     projectId: conf.google_project_id,
     keyFilename: conf.google_key_file
 });
-const myBucket = storage.bucket('aura-storage');
+const myBucket = storage.bucket(conf.storage_bucket);
 
 const MongoClient = require('mongodb').MongoClient;
 

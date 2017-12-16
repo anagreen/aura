@@ -12,7 +12,7 @@ var storage = new Storage();
 var Media = require('./media');
 var media = new Media();
 var Analyzer = require('./analyzer-v3');
-var analyzerObj = new Analyzer(conf.beyonverbal_api_key);
+var analyzerObj = new Analyzer(conf.beyondverbal_api_key);
 var analyze = Promise.promisify(analyzerObj.analyze, { context: analyzerObj });
 
 module.exports = Recognizer;

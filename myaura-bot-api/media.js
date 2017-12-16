@@ -39,6 +39,7 @@ function convertToFlac(readStream, outputStream, options) {
         } else if (options.inputFormat === 'aac') {
             convert(readStream, outputStream, options).then(resolve).catch(reject);
         } else if (['mp4', 'm4a', 'wav'].indexOf(options.inputFormat) >= 0) {
+            //TODO: Need to get rid of tmp files solution
             tmp.withFile(file => {
                 return new Promise((tmpResolve, tmpReject) => {
                     readStream.pipe(fs.createWriteStream(file.path))
@@ -56,6 +57,7 @@ function convertToFlac(readStream, outputStream, options) {
 
 
 function convertAndSaveToTmp(readStream, options) {
+    //TODO: Need to get rid of tmp files solution
     return tmp.withFile(file => {
         return new Promise((resolve, reject) => {
             console.log(`TMP FILE: ${file.path}`);
