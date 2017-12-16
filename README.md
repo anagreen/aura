@@ -11,7 +11,9 @@
 ## myaura-bot-api instructions
 ### Launch
 `docker build -t myaura-bot-api`
+
 `docker run -d -p 80:8081 myaura-bot-api`
+
 ### REST API:
 
 GET /status - just to check if service is available
