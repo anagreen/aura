@@ -11,22 +11,13 @@ var defaults = {
 }
 
 function Analyzer(apiKey, opts) {
-
-    var tokenCahced = null;
     var options = extend({}, defaults, opts);
     this.analyze = function (stream, callback) {
-
-        if (!tokenCahced) {
-            return getToken(apiKey, options, function (err, token) {
-                tokenCahced = token;
-                console.log(`beyonverbal token: ${apiKey}`);
-                return analyzeFile(tokenCahced, stream, options, callback);
-            });
-        }
-
-        return analyzeFile(tokenCahced, stream, options, callback);
+        return getToken(apiKey, options, function (err, token) {
+            console.log(`beyonverbal token: ${apiKey}`);
+            return analyzeFile(token, stream, options, callback);
+        });
     }
-    return;
 }
 
 
@@ -74,7 +65,7 @@ function analyzeFile(token, stream, options, callback) {
         }
 
         var recordingUrl = options.serverUrl + body.recordingId;
-        request.post(recordingUrl, { auth: { 'bearer': token }, body: stream, timeout: config.beyonverbal_timeout },
+        request.post(recordingUrl, { auth: { 'bearer': token }, body: stream, timeout: config.beyondverbal_timeout },
             function (err, resp, body) {
                 if (err) {
                     errorCalback(err)
