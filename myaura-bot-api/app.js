@@ -71,11 +71,11 @@ server.get('storeAndRecognize', function (req, res, next) {
     });
 });
 
-const VALENCE = 'The person feels about the subject';
-const AROUSAL = 'Level of involvement and stimulation';
-const TEMPER = 'Entire mood range';
-const MOOD_GROUPS = 'Emotional state';
-const COMBINED_EMOTIONS = 'A combination of various basic emotions';
+const VALENCE = 'Disposition';
+const AROUSAL = 'Excitement';
+const TEMPER = 'Intensity';
+const MOOD_GROUPS = 'Current mood';
+const COMBINED_EMOTIONS = 'Portrayed emotion(s)';
 
 function formatEmotionalOutputObj(resultObj) {
   return {
